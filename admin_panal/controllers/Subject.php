@@ -12,6 +12,15 @@ class Subject extends Connect{
         return $result;
     
     }
+    public function displayAjax($lev_id){
+        
+        $sql = "SELECT * FROM `subjects` WHERE `lev_id` = '$lev_id'";
+        $result = $this->conn->query($sql);
+        // return $result;
+        $data['subject']= $result->fetchAll(PDO::FETCH_ASSOC);
+           return json_encode($data);
+    
+    }
 
 
 ###############################################################
@@ -43,10 +52,9 @@ class Subject extends Connect{
         mkdir($location . $lev_name . '/' . $name);
         $sql = "INSERT INTO `subjects`(`id`, `name`, `lev_id`) VALUES (null,'$name',$lev_id)";
         $result = $this->conn->exec($sql);
-        $_SESSION['checkMessage'] = 1;
         $_SESSION['success'] = "subject created successfully";
-
         header("Refresh:0");
+        exit;
         }else{
             return $this->messErrors;
         }
@@ -61,6 +69,7 @@ class Subject extends Connect{
          return $result->fetch(PDO::FETCH_ASSOC);
         }catch(Exception $e) {
             header('location:/admin_panal/500/');
+            exit;
         }
     }
 
@@ -68,8 +77,6 @@ class Subject extends Connect{
 ###############################################################
 ########################     delete current subjects   ########
     public function destroy($sub_id,$dirName,$lev_id,$lev_name){
-        $_SESSION['checkMessage'] = 1;
-
         $location = '../../../upload/'.$lev_name.'/'.$dirName;
         $ckechLocation = scandir($location);
         if(isset($ckechLocation[2])){
@@ -81,6 +88,7 @@ class Subject extends Connect{
             $_SESSION['success'] = "subject deleted successfully";
         }
         header('location:/admin_panal/padges/subjects/?ref='.$lev_id);
+        exit;
         
     }
 }

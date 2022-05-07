@@ -32,10 +32,19 @@ $displayLevels = $Levels->display();
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Professors</span></a>
+                            <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Exams</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="All Professors" href="/admin_panal/padges/auth/admins.php"><span class="mini-sub-pro">All Admins</span></a></li>
-                                <li><a title="Add Professor" href="add-professor.html"><span class="mini-sub-pro">Add Professor</span></a></li>
+                                <li><a title="Departments List" href="/admin_panal/padges/exam/add_exam.php"><span class="mini-sub-pro">Add Exam</span></a></li>
+                                <li><a title="Departments List" href="departments.html"><span class="mini-sub-pro">Exams List</span></a></li>
+                                <li><a title="Add Departments" href="add-department.html"><span class="mini-sub-pro">Add Question</span></a></li>
+                                <li><a title="Add Departments" href="add-department.html"><span class="mini-sub-pro">Question List</span></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Settings</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="All Professors" href="/admin_panal/padges/auth/admins.php"><span class="mini-sub-pro">Display Admins</span></a></li>
+                                <li><a title="Add Professor" href="/admin_panal/padges/auth/register.php"><span class="mini-sub-pro">Register Admins</span></a></li>
                             </ul>
                         </li>
                     </ul>

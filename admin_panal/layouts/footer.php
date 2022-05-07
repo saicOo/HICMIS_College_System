@@ -54,18 +54,18 @@
     <script src="/admin_panal/assets/js/datapicker/datepicker-active.js"></script>
 <!-- morrisjs JS
     ============================================ -->
-<script src="/admin_panal/assets/js/sparkline/jquery.sparkline.min.js"></script>
-<script src="/admin_panal/assets/js/sparkline/jquery.charts-sparkline.js"></script>
-<script src="/admin_panal/assets/js/sparkline/sparkline-active.js"></script>
+<!-- <script src="/admin_panal/assets/js/sparkline/jquery.sparkline.min.js"></script> -->
+<!-- <script src="/admin_panal/assets/js/sparkline/jquery.charts-sparkline.js"></script> -->
+<!-- <script src="/admin_panal/assets/js/sparkline/sparkline-active.js"></script> -->
 <!-- notification JS
 ============================================ -->
 <script src="/admin_panal/assets/js/notifications/Lobibox.js"></script>
 <script src="/admin_panal/assets/js/notifications/notification-active.js"></script>
 <!-- calendar JS
     ============================================ -->
-<script src="/admin_panal/assets/js/calendar/moment.min.js"></script>
-<script src="/admin_panal/assets/js/calendar/fullcalendar.min.js"></script>
-<script src="/admin_panal/assets/js/calendar/fullcalendar-active.js"></script>
+<!-- <script src="/admin_panal/assets/js/calendar/moment.min.js"></script> -->
+<!-- <script src="/admin_panal/assets/js/calendar/fullcalendar.min.js"></script> -->
+<!-- <script src="/admin_panal/assets/js/calendar/fullcalendar-active.js"></script> -->
 <!-- plugins JS
     ============================================ -->
 <script src="/admin_panal/assets/js/plugins.js"></script>
@@ -81,8 +81,7 @@ if(isset($_SESSION['success'])): ?>
         msg: "<?php echo $_SESSION['success'] ?>"
     });
 <?php   // checked Message count 
-        $_SESSION['checkMessage']++;
-      if($_SESSION['checkMessage'] === 3) unset($_SESSION['success']); ?>
+         unset($_SESSION['success']); ?>
     <?php endif ?>
 <?php   //  session notification success 
  if(isset($_SESSION['error'])): ?>
@@ -91,11 +90,14 @@ if(isset($_SESSION['success'])): ?>
         msg: "<?php echo $_SESSION['error'] ?>"
     });
     <?php   // checked Message count
-        $_SESSION['checkMessage']++;
-      if($_SESSION['checkMessage'] === 3) unset($_SESSION['error']); ?>
+            unset($_SESSION['error']); ?>
 <?php endif ?>
 </script>
-
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+       
 </body>
 
 </html>
