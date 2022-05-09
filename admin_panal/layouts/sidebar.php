@@ -35,8 +35,8 @@ $displayLevels = $Levels->display();
                             <a class="has-arrow" href="all-courses.html" aria-expanded="false"><span class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">Exams</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Departments List" href="/admin_panal/padges/exam/add_exam.php"><span class="mini-sub-pro">Add Exam</span></a></li>
-                                <li><a title="Departments List" href="departments.html"><span class="mini-sub-pro">Exams List</span></a></li>
-                                <li><a title="Add Departments" href="add-department.html"><span class="mini-sub-pro">Add Question</span></a></li>
+                                <li><a title="Departments List" href="/admin_panal/padges/exam/"><span class="mini-sub-pro">Exams List</span></a></li>
+                                <li><a title="Add Departments" href="/admin_panal/padges/question/add_question.php"><span class="mini-sub-pro">Add Question</span></a></li>
                                 <li><a title="Add Departments" href="add-department.html"><span class="mini-sub-pro">Question List</span></a></li>
                             </ul>
                         </li>

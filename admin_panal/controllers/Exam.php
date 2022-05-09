@@ -6,8 +6,7 @@ class Exam extends Connect{
 ###############################################################
 ########################     display all exams      ########
     public function display(){
-        $sql = "SELECT code_st,national,`status`,exam.name,lev_id,levels.name AS lev_name 
-        FROM `exam` JOIN `levels` ON exam.lev_id = levels.id ORDER BY `name`";
+        $sql = "SELECT * FROM `exams` ";
         $result = $this->conn->query($sql);
         return $result;
     }

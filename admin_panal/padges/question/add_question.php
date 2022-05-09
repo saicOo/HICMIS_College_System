@@ -5,21 +5,21 @@ function __autoload($class){
     require PAGE_PATH."/../controllers/".$class.".php";
 }
 new Auth;
-$Level = new Level;
-$displayLev = $Level->display();
 $exam = new Exam;
+$displayExam = $exam->display();
+$question = new Question;
 if(isset($_POST['submit'])){
-    $sub_id = isset($_POST['sub_id']) ?$_POST['sub_id'] :"";
     $request = array(
-        'title'=>  $_POST['title'],
-        'exam_datetime'=>  $_POST['exam_datetime'],
-        'duration'=>  $_POST['duration'],
-        'total_question'=>  $_POST['total_question'],
-        'lev_id'=> $_POST['lev_id'],
-        'sub_id'=>  $sub_id,
+        'question_title'=>  $_POST['question_title'],
+        'answer_option'=>  $_POST['answer_option'],
+        'option_title1'=>  $_POST['option_title1'],
+        'option_title2'=>  $_POST['option_title2'],
+        'option_title3'=>  $_POST['option_title3'],
+        'option_title4'=>  $_POST['option_title4'],
+        'exam_id'=> $_POST['exam_id'],
     );
 
- $exam->store($request);
+ $question->store($request);
 
 }
 #########################################################
@@ -90,48 +90,40 @@ require_once PAGE_PATH."/../layouts/header.php";
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
-                                                                    <input name="title" id="title" type="text" class="form-control" placeholder="title" value="<?php if(isset($_POST['title']))echo $_POST['title'] ?>">
-                                                                </div>
-                                                                <div class="form-group " >
-                                                                    <label>exam datetime</label>
-                                                                    <div >
-                                                                        <input name="exam_datetime" type="datetime-local" class="form-control">
-                                                                    </div>
+                                                                    <input name="question_title" id="question_title" type="text" class="form-control" placeholder="question_title" value="<?php if(isset($_POST['question_title']))echo $_POST['question_title'] ?>">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <select name="duration" class="form-control">
-																		<option value="">Select duration</option>
-																		<option value="5 Minute">5 Minute</option>
-																		<option value="30 Minute">30 Minute</option>
-																		<option value="1 hour">1 Hour</option>
-																		<option value="2 hour">2 Hour</option>
+                                                                    <select name="exam_id" class="form-control">
+                                                                    <option value="">Select Level</option>
+                                                                    <?php foreach($displayExam as $item): ?>
+                                                                        <option value="<?php echo $item['exam_id'] ?>"><?php echo $item['exam_title'] ?></option>
+                                                                        <?php endforeach ?>																			
+																		</select>
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
+                                                                    <select name="answer_option" class="form-control">
+																		<option value="">Select answer_option</option>
+																		<option value="1">Option 1</option>
+																		<option value="2">Option 2</option>
+																		<option value="3">Option 3</option>
+																		<option value="4">Option 4</option>
 																	</select>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <div class="form-group">
-                                                                    <select name="lev_id" id="level" class="form-control levels">
-                                                                    <option value="">Select Level</option>
-                                                                    <?php foreach($displayLev as $item): ?>
-                                                                        <option value="<?php echo $item['id'] ?>"><?php echo $item['name'] ?></option>
-                                                                        <?php endforeach ?>																			
-																		</select>
+                                                                    <input name="option_title1" id="option_title1" type="text" class="form-control" placeholder="option_title1" value="<?php if(isset($_POST['option_title1']))echo $_POST['option_title1'] ?>">
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <select name="sub_id" class="form-control subjects">
-                                                                    																		
-																		</select>
+                                                            <div class="form-group">
+                                                                    <input name="option_title2" id="option_title2" type="text" class="form-control" placeholder="option_title2" value="<?php if(isset($_POST['option_title2']))echo $_POST['option_title2'] ?>">
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <select name="total_question" class="form-control">
-																		<option value="">Select Total Question</option>
-																		<option value="5">5 Question</option>
-																		<option value="10">10 Question</option>
-																		<option value="15">15 Question</option>
-																		<option value="20">20 Question</option>
-																	</select>
+                                                            <div class="form-group">
+                                                                    <input name="option_title3" id="option_title3" type="text" class="form-control" placeholder="option_title3" value="<?php if(isset($_POST['option_title3']))echo $_POST['option_title3'] ?>">
                                                                 </div>
-                                                                
+                                                            <div class="form-group">
+                                                                    <input name="option_title4" id="option_title4" type="text" class="form-control" placeholder="option_title4" value="<?php if(isset($_POST['option_title4']))echo $_POST['option_title4'] ?>">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -159,27 +151,27 @@ require_once PAGE_PATH."/../layouts/header.php";
         <!-- start footer area -->
         <?php  require_once PAGE_PATH."/../layouts/footer.php"; ?>
         <!-- end footer area -->
-        <script type="text/javascript">
-    $(document).on('change','.levels',function(){
-    level = $(this).val();
-    console.log(level);
-    $.ajax({
-        method:'POST',
-        url:'/admin_panal/padges/exam/ajax.php',
-        dataType: "json",
-        data: {lev: level},
-        success: function(data,status){
-            console.log(data);
-            console.log(status);
-            var subjects = '<option>-- Select Subject --</option>';
-            var arr = data.subject.length;
-            var aa = data.subject;
-           
-            for(var i=0;i<arr;i++){
-               subjects += '<option value="'+aa[i].id+'">'+aa[i].name+'</option>';
-            }
-            $(".subjects").html(subjects);
-        }
-    })
-});
-</script>
+        <!-- <script type="text/javascript">
+            $(document).on('change','.levels',function(){
+            level = $(this).val();
+            console.log(level);
+            $.ajax({
+                method:'POST',
+                url:'/admin_panal/padges/exam/ajax.php',
+                dataType: "json",
+                data: {lev: level},
+                success: function(data,status){
+                    console.log(data);
+                    console.log(status);
+                    var subjects = '<option>-- Select Subject --</option>';
+                    var arr = data.subject.length;
+                    var aa = data.subject;
+                   
+                    for(var i=0;i<arr;i++){
+                       subjects += '<option value="'+aa[i].id+'">'+aa[i].name+'</option>';
+                    }
+                    $(".subjects").html(subjects);
+                }
+            })
+        });
+        </script> -->

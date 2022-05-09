@@ -69,6 +69,20 @@ require_once "./layouts/header.php";
             </div>
       </div>
       <?php endforeach ?>
+      <div class="single-popular-course">
+        <div class="thumb">
+          <img class="f-img img-fluid mx-auto" src="assets/img/h2.webp" alt="" />
+        </div>
+        <div class="details">
+          <div class="d-flex justify-content-between mb-20">
+          </div>
+          <a href="/student_panal/padges/exam/?ref=1">
+              <h4>اختبار الامتحانات</h4>
+            </a>
+              <div class="bottom d-flex mt-15">
+              </div>
+            </div>
+      </div>
   </div>
 </section>
         <!-- start footer area -->

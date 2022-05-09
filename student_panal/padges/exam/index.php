@@ -5,6 +5,27 @@ function __autoload($class){
     require PAGE_PATH."/../controllers/".$class.".php";
 }
 new Auth;
+$exam = new Exam;
+if(isset($_GET['ref'])){
+    $exam_id = $_GET['ref'];
+    // $page = isset($_GET['page'])?$_GET['page']:1;
+    $page = $_GET['page'];
+    $question = $exam->display($exam_id,$page);
+    $option = $exam->option($question['question_id']);
+    shuffle($option);
+}
+if(isset($_POST['next'])){
+    $exam_id = $_GET['ref'];
+    $page = $_GET['page'];
+    $exam->saveAnswarNext($exam_id,$page);
+
+}
+if(isset($_POST['prev'])){
+    $exam_id = $_GET['ref'];
+    $page = $_GET['page'];
+    $exam->saveAnswarPrev($exam_id,$page);
+
+}
 
 #########################################################
         // <!-- start header area -->
@@ -112,33 +133,33 @@ require_once PAGE_PATH."/../layouts/header.php";
 <div class="whole-wrap mb-30">
 <div class="container q mt-sm-5 my-1">
     <div class="question ml-sm-5 pl-sm-5 pt-2">
-        <div class="py-2 mb-4 h4"><b>Q. which option best describes your job role?</b></div>
+        <div class="py-2 mb-4 h4"><b><?php echo $question['question_title'] ?></b></div>
         <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
             <form method="post">
-            <label class="options">Small Business Owner or Employee
-                <input type="radio" name="radio">
+            <label class="options"><?php echo $option[0]['option_title'] ?>
+                <input type="radio" name="radio" value="<?php echo $option[0]['option_id'] ?>">
                 <span class="checkmark"></span>
             </label>
-            <label class="options">Nonprofit Owner or Employee
-                <input type="radio" name="radio">
+            <label class="options"><?php echo $option[1]['option_title'] ?>
+                <input type="radio" name="radio" value="<?php echo $option[1]['option_id'] ?>">
                 <span class="checkmark"></span>
             </label>
-            <label class="options">Journalist or Activist
-                <input type="radio" name="radio">
+            <label class="options"><?php echo $option[2]['option_title'] ?>
+                <input type="radio" name="radio" value="<?php echo $option[2]['option_id'] ?>">
                 <span class="checkmark"></span>
             </label>
-            <label class="options">Other
-                <input type="radio" name="radio">
+            <label class="options"><?php echo $option[3]['option_title'] ?>
+                <input type="radio" name="radio" value="<?php echo $option[3]['option_id'] ?>">
                 <span class="checkmark"></span>
             </label>
         </div>
     </div>
     <div class="d-flex align-items-center pt-3">
         <div id="prev">
-            <button class="btn btn-primary">Previous</button>
+            <button name="prev" class="btn btn-primary">Previous</button>
         </div>
         <div class="ml-auto mr-sm-5">
-            <button class="btn btn-success">Next</button>
+            <button name="next" class="btn btn-success">Next</button>
         </div>
     </div>
     </form>

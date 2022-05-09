@@ -10,6 +10,7 @@ if(isset($_GET['ref'])){
     $ref_id = $_GET['ref'];
     $subject = new Subject;
     $disblaySub = $subject->display($ref_id);
+    
     $level = new Level;
     $levelRow = $level->show($ref_id);
     if(empty($levelRow)) header('location:/admin_panal/500/');
