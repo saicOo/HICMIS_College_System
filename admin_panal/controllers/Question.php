@@ -6,7 +6,7 @@ class Question extends Connect{
 ###############################################################
 ########################     display all exams      ########
     public function display(){
-        $sql = "SELECT * FROM `exams` ";
+        $sql = "SELECT * FROM `question` ";
         $result = $this->conn->query($sql);
         return $result;
     }

@@ -22,6 +22,7 @@ if(isset($_GET['ref'])){
     $sub_name = $mateRow['name'];
     $sub_id = $mateRow['sub_id'];
     $lev_id = $mateRow['lev_id'];
+    $lev_name = $mateRow['lev_name'];
 }
 catch(Exception $e) {
     header('location:/admin_panal/500/');
@@ -70,7 +71,7 @@ require_once PAGE_PATH."/../layouts/header.php";
           <div class="col-lg-8 course-details-left">
               <div class="main-image">
                 <video width="100%" height="100%" controls  poster="../../assets/img/h2.webp">
-                  <source src="../../../upload/<?php echo $levelRow['name'] .'/'. $mateRow['name'] .'/'. $mateRow['description'] .'/'. $lectRow['lecture_name'] ?>" type="video/mp4">
+                  <source src="../../../upload/<?php echo $lev_name .'/'. $mateRow['name'] .'/'. $mateRow['description'] .'/'. $lectRow['lecture_name'] ?>" type="video/mp4">
                 
            
                 </video>

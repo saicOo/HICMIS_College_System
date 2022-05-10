@@ -76,7 +76,7 @@ require_once "./layouts/header.php";
         <div class="details">
           <div class="d-flex justify-content-between mb-20">
           </div>
-          <a href="/student_panal/padges/exam/?ref=1">
+          <a href="/student_panal/padges/exam/exams.php">
               <h4>اختبار الامتحانات</h4>
             </a>
               <div class="bottom d-flex mt-15">

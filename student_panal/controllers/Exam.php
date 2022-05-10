@@ -4,14 +4,26 @@ class Exam extends Connect{
     
 ###############################################################
 ########################     display all exams      ########
-    public function display($exam_id,$page){
+    public function displayExam(){
+        $level_id = $_SESSION['lev_id'];
+        $sql = "SELECT * FROM `exams` WHERE level_id = $level_id";
+        $result = $this->conn->query($sql);
+        return $result;
+       
+    }
+    public function showExam($exam_id){
+        $sql = "SELECT * FROM `exams` WHERE exam_id = $exam_id";
+        $result = $this->conn->query($sql);
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        return $row;
+       
+    }
+    public function showQuestion($exam_id,$page){
         $sql = "SELECT * FROM `question` WHERE exam_id = $exam_id";
         $result = $this->conn->query($sql);
         $row = $result->fetchAll(PDO::FETCH_ASSOC);
         $countRow = $row;
-        
         return count($countRow) >= $page ? $row[$page - 1] : $row[0];
-        
     }
 
     public function option($question_id){
@@ -19,8 +31,32 @@ class Exam extends Connect{
         $result = $this->conn->query($sql);
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+    public function saveAnswar($exam_id,$student_id,$ques_id,$option){
+        // check admin if exists
+        $check = "SELECT * FROM `student_revisions` WHERE `student_id` = $student_id AND `question_id` = $ques_id";
+        $result  = $this->conn->query($check);
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        
+        $getQuestion = "SELECT * FROM `question` WHERE question_id = $ques_id";
+            $question = $this->conn->query($getQuestion);
+            $answer_option = $question->fetch(PDO::FETCH_ASSOC)['answer_option'];
+        $mark = $option === $answer_option ? "5 mark" : "- 5 mark";
+        if(!$row){
+            $insert = "INSERT INTO `student_revisions`(`revision_id`, `student_id`, `exam_id`, `question_id`,`answar_option`,`marks`) VALUES (null,$student_id,$exam_id,$ques_id,'$option','$mark')";
+                $this->conn->exec($insert);
+        }else{
+            $insert = "UPDATE `student_revisions` SET `answar_option`='$option',`marks`='$mark' WHERE `student_id` = $student_id AND `question_id` = $ques_id";
+                $this->conn->exec($insert);
+        
+        }
+    }
     
-    public function saveAnswarNext($exam_id,$page){
+
+    public function saveAnswarNext($exam_id,$student_id,$page,$ques_id,$option){
+        if(isset($option))
+        $this->saveAnswar($exam_id,$student_id,$ques_id,$option);
         ++$page;
         $sql = "SELECT * FROM `question` WHERE exam_id = $exam_id";
         $result = $this->conn->query($sql);
@@ -29,29 +65,12 @@ class Exam extends Connect{
         header('location:/student_panal/padges/exam/index.php?ref='.$exam_id.'&page='.$page);
         exit;
     }
-    public function saveAnswarPrev($exam_id,$page){
-        // check admin if exists
-$check = "SELECT * FROM `presences` WHERE `std_id` = $code_std AND `sub_id` = $sub_id";
-$result  = $this->conn->query($check);
-$row = $result->fetch(PDO::FETCH_ASSOC);
-
-if(!$row){
-    $sql = "INSERT INTO `presences`(`pres_id`, `std_id`, `sub_id`, `presence_count`) VALUES (null,'$code_std','$sub_id',1)";
-        $this->conn->exec($sql);
-}else{
-    date_default_timezone_set('Canada/Pacific');
-                                                           
-    if(date("Y-m-d", strtotime($row['pres_date'])) !== date("Y-m-d") ){
-    $presence = $row['presence_count'] + 1;
-    $sql = "UPDATE `presences` SET `presence_count`='$presence',`pres_date`=current_timestamp() WHERE `std_id` = $code_std AND `sub_id` = $sub_id";
-        $this->conn->exec($sql);
-    }else{
-        $sql = "UPDATE `presences` SET `pres_date`=current_timestamp() WHERE `std_id` = $code_std AND `sub_id` = $sub_id";
-            $this->conn->exec($sql);
-    }
-}
 
 
+
+    public function saveAnswarPrev($exam_id,$student_id,$page,$ques_id,$option){
+        if(isset($option))
+        $this->saveAnswar($exam_id,$student_id,$ques_id,$option);
 
         --$page;
         $sql = "SELECT * FROM `question` WHERE exam_id = $exam_id";

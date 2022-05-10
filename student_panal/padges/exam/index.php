@@ -8,23 +8,27 @@ new Auth;
 $exam = new Exam;
 if(isset($_GET['ref'])){
     $exam_id = $_GET['ref'];
-    // $page = isset($_GET['page'])?$_GET['page']:1;
-    $page = $_GET['page'];
-    $question = $exam->display($exam_id,$page);
-    $option = $exam->option($question['question_id']);
+    $student_id = $_SESSION['code_std'];
+    $page = isset($_GET['page'])?$_GET['page']:1;
+    $examRow =  $exam->showExam($exam_id);
+    // $page = $_GET['page'];
+    $question = $exam->showQuestion($exam_id,$page);
+    $ques_id = $question['question_id'];
+    $option = $exam->option($ques_id);
     shuffle($option);
 }
 if(isset($_POST['next'])){
     $exam_id = $_GET['ref'];
     $page = $_GET['page'];
-    $exam->saveAnswarNext($exam_id,$page);
+    $option =  $_POST['option'];
+    $exam->saveAnswarNext($exam_id,$student_id,$page,$ques_id,$option);
 
 }
 if(isset($_POST['prev'])){
     $exam_id = $_GET['ref'];
     $page = $_GET['page'];
-    $exam->saveAnswarPrev($exam_id,$page);
-
+    $option =  $_POST['option'];
+    $exam->saveAnswarPrev($exam_id,$student_id,$page,$ques_id,$option);
 }
 
 #########################################################
@@ -111,7 +115,7 @@ require_once PAGE_PATH."/../layouts/header.php";
     <div class="row justify-content-center align-items-center">
       <div class="col-lg-12 banner-right">
         <h1 class="text-white">
-        <?php echo "test" ?>
+        <?php echo $examRow['exam_title'] ?>
         </h1>
         <p class="mx-auto text-white  mt-20 mb-40">
           Welcome to EducationGive you lectures and Skation
@@ -120,7 +124,7 @@ require_once PAGE_PATH."/../layouts/header.php";
           <span class="box">
             <a href="/student_panal/">Home </a>
             <i class="lnr lnr-arrow-right"></i>
-            <a href="#"><?php echo "test" ?> </a>
+            <a href="#"><?php echo "Question" ." ". $page ?> </a>
           </span>
         </div>
       </div>
@@ -137,25 +141,26 @@ require_once PAGE_PATH."/../layouts/header.php";
         <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
             <form method="post">
             <label class="options"><?php echo $option[0]['option_title'] ?>
-                <input type="radio" name="radio" value="<?php echo $option[0]['option_id'] ?>">
+                <input type="radio" name="option" value="<?php echo $option[0]['option_number'] ?>">
                 <span class="checkmark"></span>
             </label>
             <label class="options"><?php echo $option[1]['option_title'] ?>
-                <input type="radio" name="radio" value="<?php echo $option[1]['option_id'] ?>">
+                <input type="radio" name="option" value="<?php echo $option[1]['option_number'] ?>">
                 <span class="checkmark"></span>
             </label>
             <label class="options"><?php echo $option[2]['option_title'] ?>
-                <input type="radio" name="radio" value="<?php echo $option[2]['option_id'] ?>">
+                <input type="radio" name="option" value="<?php echo $option[2]['option_number'] ?>">
                 <span class="checkmark"></span>
             </label>
             <label class="options"><?php echo $option[3]['option_title'] ?>
-                <input type="radio" name="radio" value="<?php echo $option[3]['option_id'] ?>">
+                <input type="radio" name="option" value="<?php echo $option[3]['option_number'] ?>">
                 <span class="checkmark"></span>
             </label>
         </div>
     </div>
     <div class="d-flex align-items-center pt-3">
         <div id="prev">
+            <button name="finish" class="btn btn-primary">Finish</button>
             <button name="prev" class="btn btn-primary">Previous</button>
         </div>
         <div class="ml-auto mr-sm-5">
