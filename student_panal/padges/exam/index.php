@@ -141,19 +141,23 @@ require_once PAGE_PATH."/../layouts/header.php";
         <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
             <form method="post">
             <label class="options"><?php echo $option[0]['option_title'] ?>
-                <input type="radio" name="option" value="<?php echo $option[0]['option_number'] ?>">
+                <input type="radio" name="option" value="<?php echo $option[0]['option_number'] ?>"
+                 <?php if( $exam->checkOption($question['question_id']) == $option[0]['option_number']) echo "checked"  ?> >
                 <span class="checkmark"></span>
             </label>
             <label class="options"><?php echo $option[1]['option_title'] ?>
-                <input type="radio" name="option" value="<?php echo $option[1]['option_number'] ?>">
+                <input type="radio" name="option" value="<?php echo $option[1]['option_number'] ?>"
+                <?php if( $exam->checkOption($question['question_id']) == $option[1]['option_number']) echo "checked"  ?>>
                 <span class="checkmark"></span>
             </label>
             <label class="options"><?php echo $option[2]['option_title'] ?>
-                <input type="radio" name="option" value="<?php echo $option[2]['option_number'] ?>">
+                <input type="radio" name="option" value="<?php echo $option[2]['option_number'] ?>"
+                <?php if( $exam->checkOption($question['question_id']) == $option[2]['option_number']) echo "checked"  ?>>
                 <span class="checkmark"></span>
             </label>
             <label class="options"><?php echo $option[3]['option_title'] ?>
-                <input type="radio" name="option" value="<?php echo $option[3]['option_number'] ?>">
+                <input type="radio" name="option" value="<?php echo $option[3]['option_number'] ?>"
+                <?php if( $exam->checkOption($question['question_id']) == $option[3]['option_number']) echo "checked"  ?>>
                 <span class="checkmark"></span>
             </label>
         </div>

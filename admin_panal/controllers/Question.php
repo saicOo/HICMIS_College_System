@@ -4,12 +4,20 @@ class Question extends Connect{
     public $messErrors = [];
     
 ###############################################################
-########################     display all exams      ########
-    public function display(){
-        $sql = "SELECT * FROM `question` ";
+########################     display all question      ########
+    public function display($exam_id){
+        $sql = "SELECT * FROM `question` WHERE exam_id = $exam_id ";
         $result = $this->conn->query($sql);
         return $result;
     }
+###############################################################
+########################  display option index of question ########
+    public function displayOption($question_id){
+        $sql = "SELECT * FROM `option` WHERE question_id = $question_id";
+        $result = $this->conn->query($sql);
+        return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 ###############################################################
 ########################     store exam             ########
     public function store($request){

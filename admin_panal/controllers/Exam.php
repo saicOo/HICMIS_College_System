@@ -2,25 +2,43 @@
 require_once "Connect.php";
 class Exam extends Connect{
     public $messErrors = [];
-    
+
+
+###############################################################
+########################     checkDateEaxam all exams      ########
+    public function checkDateEaxam(){
+        $sql = "SELECT exam_id,exam_datetime FROM `exams` ";
+        $exams = $this->conn->query($sql);  
+        date_default_timezone_set('Canada/Pacific');
+        foreach ($exams as $item) {
+            $exam_id = $item['exam_id'];
+            if (date("Y-m-d h:i A", strtotime($item['exam_datetime'])) <= date("Y-m-d h:i A")) {
+                $sql = "UPDATE `exams` SET `status`='completed' WHERE `exam_id` = '$exam_id'";
+                $this->conn->exec($sql);
+            }
+        }
+    }
 ###############################################################
 ########################     display all exams      ########
     public function display(){
         $sql = "SELECT * FROM `exams` ";
+        $result = $this->conn->query($sql);        
+        return $result;
+    }
+###############################################################
+########################     display exams of level      ########
+    public function displayOfLevel($level_id){
+        $sql = "SELECT * FROM `exams` WHERE level_id = $level_id";
         $result = $this->conn->query($sql);
         return $result;
     }
 ###############################################################
-########################     display all exams      ########
-    public function search($search){
-        $sql = "SELECT code_st,national,`status`,exam.name,lev_id,levels.name AS lev_name 
-        FROM `exam` JOIN `levels` ON exam.lev_id = levels.id 
-        WHERE exam.name LIKE '%$search%' OR code_st = '$search' OR national = '$search'
-        ORDER BY `name`";
-        $result = $this->conn->query($sql);
-        return $result;
-    }
-    
+########################     count question      ########
+public function questionCount($exam_id){
+    $sql = "SELECT COUNT(exam_id) AS c FROM `question` WHERE exam_id = $exam_id";
+    $result = $this->conn->query($sql);
+    return $result->fetch(PDO::FETCH_ASSOC);
+}
 ###############################################################
 ########################     store exam             ########
     public function store($request){
@@ -57,39 +75,13 @@ class Exam extends Connect{
               return  $this->messErrors;
             }
     }
-###############################################################
-########################     update current exam    ########
-    public function update($request,$code){
-        $name = $request['name'];
-        $phone = $request['phone'];
-        $address = $request['address'];
-        /********************************************
-        *** check inputs empty
-        */
-        if(empty($name)) $this->messErrors[] = "the input name is empty";
-        if(empty($phone)) $this->messErrors[] = "the input phone is empty";
-        if(empty($address)) $this->messErrors[] = "the input address is empty";
-        /********************************************
-        *** check inputs length
-        */
-        if(strlen($name) > 30) $this->messErrors[] = "the name max length char 30";
-        if(strlen($phone) != 11) $this->messErrors[] = "Phone numbers must be 11 . long";
-        if(strlen($address) > 30) $this->messErrors[] = "the address max length char 30";
-        if(empty($this->messErrors)){
-            $sql = "UPDATE `exam` SET `name`='$name',`phone`='$phone',`address`='$address' WHERE `code_st` = $code";
-            $result = $this->conn->exec($sql);
-            $_SESSION['success'] = "The exam has been successfully registered";
-            header("Refresh:0");
-            exit;
-        }
-    }
 
 ###############################################################
 ########################     display single exam    ########
-    public function show($code_std){
+    public function show($exam_id){
         try{
-        $sql = "SELECT code_st,national,exam.name,address,phone,gender,birthday,lev_id,levels.name AS lev_name 
-        FROM `exam` JOIN `levels` ON exam.lev_id = levels.id WHERE `code_st` = '$code_std'";
+        $sql = "SELECT * 
+        FROM `exams` WHERE `exam_id` = '$exam_id'";
         $result = $this->conn->query($sql);
          return $result->fetch(PDO::FETCH_ASSOC);
         }
@@ -98,5 +90,15 @@ class Exam extends Connect{
         }
     }
 
-
+###############################################################
+########################     status Exam  ########
+public function status($exam_id,$status){
+    $sql = "UPDATE `exams` SET `status`='$status' WHERE `exam_id` = '$exam_id'";
+    $result = $this->conn->exec($sql);
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+} 
 }
+//  if(date("Y-m-d h:i A", strtotime($item['exam_datetime'])) <= date("Y-m-d h:i A") ){
+//      }else{
+//       <h5><span>Waiting ... </span></h5>
+//       }

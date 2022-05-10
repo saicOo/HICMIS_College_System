@@ -56,6 +56,7 @@ require_once PAGE_PATH."/../layouts/header.php";
             </div>
           </div>
         <?php foreach($exams as $item): ?>
+          <?php if(date("Y-m-d h:i A", strtotime($item['exam_datetime'])) >= date("Y-m-d h:i A") ): ?>
           <div class="col-lg-4 col-md-6">
             <div class="other-feature-item">
               <i class="ti-medall-alt"></i>
@@ -68,13 +69,14 @@ require_once PAGE_PATH."/../layouts/header.php";
                 Exam Time <?php echo $item['exam_duration'] ?>
                 </p>
               </div>
-              <?php if(date("Y-m-d h:i A", strtotime($item['exam_datetime'])) <= date("Y-m-d h:i A") ): ?>
-                <h5><a href="/student_panal/padges/exam/?ref=<?php echo $item['exam_id'] ?>">Start Exam</a></h5>
+              <?php if($item['status'] === "created"): ?>
+                <h5><a href="/student_panal/padges/exam/?ref=<?php echo $item['exam_id'] ."&page=1"?>">Start Exam</a></h5>
                 <?php else: ?>
                   <h5><span>Waiting ... </span></h5>
                   <?php endif ?>
             </div>
           </div>
+          <?php endif ?>
           <?php endforeach; ?>
         </div>
       </div>

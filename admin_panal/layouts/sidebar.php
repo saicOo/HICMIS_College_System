@@ -37,7 +37,6 @@ $displayLevels = $Levels->display();
                                 <li><a title="Departments List" href="/admin_panal/padges/exam/add_exam.php"><span class="mini-sub-pro">Add Exam</span></a></li>
                                 <li><a title="Departments List" href="/admin_panal/padges/exam/"><span class="mini-sub-pro">Exams List</span></a></li>
                                 <li><a title="Add Departments" href="/admin_panal/padges/question/add_question.php"><span class="mini-sub-pro">Add Question</span></a></li>
-                                <li><a title="Add Departments" href="/admin_panal/padges/question/"><span class="mini-sub-pro">Question List</span></a></li>
                             </ul>
                         </li>
                         <li>

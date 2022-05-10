@@ -81,4 +81,14 @@ class Exam extends Connect{
         exit;
     }
 
+    ###############################################################
+########################     display all question      ########
+public function checkOption($question_id){
+    $student_id = $_SESSION['code_std'];
+    $sql = "SELECT answar_option FROM `student_revisions` WHERE question_id = $question_id AND student_id = $student_id ";
+    $row = $this->conn->query($sql);
+    $option = $row->fetch(PDO::FETCH_ASSOC);
+    $result = isset($option['answar_option']) ? $option['answar_option'] : 5; 
+    return $result;
+}
 }
