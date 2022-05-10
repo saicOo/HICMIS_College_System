@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2022 at 09:23 PM
+-- Generation Time: May 10, 2022 at 02:26 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -67,7 +67,9 @@ CREATE TABLE `exams` (
 --
 
 INSERT INTO `exams` (`exam_id`, `exam_title`, `exam_datetime`, `exam_duration`, `total_question`, `status`, `level_id`, `subject_id`) VALUES
-(1, 'امتحان قواعد بيانات الفرقة الاولي', '2022-05-06 17:19:00', '5 Minute', 5, 'pending', 1, 75);
+(1, 'امتحان قواعد بيانات الفرقة الاولي', '2022-05-06 17:19:00', '5 Minute', 5, 'pending', 1, 75),
+(2, 'امتحان احصاء الفرقة الثانية', '2022-05-10 22:21:00', '30 Minute', 5, 'pending', 2, 79),
+(3, 'امتحان محاسبة الفرقة الاولي', '2022-05-10 11:31:00', '5 Minute', 5, 'pending', 1, 77);
 
 -- --------------------------------------------------------
 
@@ -88,7 +90,6 @@ CREATE TABLE `lectures` (
 --
 
 INSERT INTO `lectures` (`lecture_id`, `lecture_name`, `typ`, `date_lec`, `material_id`) VALUES
-(41, 'pexels-mikhail-nilov-8298336.mp4', 1, '21:56:13', 91),
 (42, 'production ID_4986111.mp4', 2, '21:56:20', 91),
 (43, 'floor-park.jpg', 1, '22:12:45', 92),
 (44, 'pexels-mikhail-nilov-8298336.mp4', 1, '00:51:56', 94);
@@ -150,6 +151,28 @@ CREATE TABLE `option` (
   `option_title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `option`
+--
+
+INSERT INTO `option` (`option_id`, `question_id`, `option_number`, `option_title`) VALUES
+(1, 1, 1, 'طه حسين'),
+(2, 1, 2, 'فريد شوقي'),
+(3, 1, 3, 'فؤاد المهندس'),
+(4, 1, 4, 'اجابة اخري'),
+(5, 2, 1, 'باريس'),
+(6, 2, 2, 'برشلونه'),
+(7, 2, 3, 'ريال مدريد'),
+(8, 2, 4, 'الاهلي'),
+(9, 3, 1, 'ممثل'),
+(10, 3, 2, 'رجل اعمال'),
+(11, 3, 3, 'لا شئ مما سبق'),
+(12, 3, 4, 'مطرب شعبي'),
+(13, 4, 1, 'باريس'),
+(14, 4, 2, 'فريد شوقي'),
+(15, 4, 3, 'ريال مدريد'),
+(16, 4, 4, 'مطرب شعبي');
+
 -- --------------------------------------------------------
 
 --
@@ -171,7 +194,7 @@ CREATE TABLE `presences` (
 INSERT INTO `presences` (`pres_id`, `std_id`, `sub_id`, `presence_count`, `pres_date`) VALUES
 (1, 9999, 78, 2, '2022-05-05 11:24:39'),
 (2, 32131, 76, 2, '2022-05-05 11:24:39'),
-(3, 32131, 75, 1, '2022-05-05 11:24:39'),
+(3, 32131, 75, 2, '2022-05-09 22:54:56'),
 (4, 3232, 76, 5, '2022-05-05 11:30:26'),
 (5, 32131, 77, 5, '2022-05-05 12:42:40'),
 (6, 8799, 75, 1, '2022-05-05 13:31:42'),
@@ -191,6 +214,16 @@ CREATE TABLE `question` (
   `question_title` text NOT NULL,
   `answer_option` enum('1','2','3','4') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `question`
+--
+
+INSERT INTO `question` (`question_id`, `exam_id`, `question_title`, `answer_option`) VALUES
+(1, 1, 'من الذي قتل علي بيه الكبير', '4'),
+(2, 1, 'احسن نادي في اروبا', '4'),
+(3, 1, 'من هو نيوتين', '3'),
+(4, 3, 'من هو نيوتين', '3');
 
 -- --------------------------------------------------------
 
@@ -229,7 +262,32 @@ INSERT INTO `student` (`code_st`, `national`, `name`, `address`, `phone`, `gende
 (9757, 12345679814562, 'omar', 'gizza', '01666664486', 'male', '1998-10-27', 'not accept', 1),
 (9895, 12345687921366, 'loay', 'cairo', '11111111111', 'male', '1999-10-11', 'accept', 2),
 (9999, 12354897216452, 'khaled', 'gizza', '11111111111', 'male', '1999-10-11', 'accept', 2),
-(32131, 555, 'sayed', 'city nassir', '01245459112', '', '1995-03-09', 'not accept', 1);
+(32131, 555, 'sayed', 'city nassir', '01245459112', '', '1995-03-09', 'accept', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_revisions`
+--
+
+CREATE TABLE `student_revisions` (
+  `revision_id` bigint(20) NOT NULL,
+  `student_id` bigint(20) NOT NULL,
+  `exam_id` bigint(20) NOT NULL,
+  `question_id` bigint(20) NOT NULL,
+  `answar_option` enum('1','2','3','4') NOT NULL,
+  `marks` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `student_revisions`
+--
+
+INSERT INTO `student_revisions` (`revision_id`, `student_id`, `exam_id`, `question_id`, `answar_option`, `marks`) VALUES
+(1, 32131, 1, 2, '1', '- 5 mark'),
+(2, 32131, 1, 1, '4', '5 mark'),
+(3, 32131, 1, 3, '3', '5 mark'),
+(4, 5546, 3, 4, '3', '5 mark');
 
 -- --------------------------------------------------------
 
@@ -325,6 +383,15 @@ ALTER TABLE `student`
   ADD KEY `lev_id` (`lev_id`);
 
 --
+-- Indexes for table `student_revisions`
+--
+ALTER TABLE `student_revisions`
+  ADD PRIMARY KEY (`revision_id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `exam_id` (`exam_id`),
+  ADD KEY `question_id` (`question_id`);
+
+--
 -- Indexes for table `subjects`
 --
 ALTER TABLE `subjects`
@@ -345,7 +412,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `exams`
 --
 ALTER TABLE `exams`
-  MODIFY `exam_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `exam_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `lectures`
@@ -369,7 +436,7 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT for table `option`
 --
 ALTER TABLE `option`
-  MODIFY `option_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `option_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `presences`
@@ -381,7 +448,13 @@ ALTER TABLE `presences`
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `question_id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `question_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `student_revisions`
+--
+ALTER TABLE `student_revisions`
+  MODIFY `revision_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `subjects`
@@ -436,6 +509,14 @@ ALTER TABLE `question`
 --
 ALTER TABLE `student`
   ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`lev_id`) REFERENCES `levels` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `student_revisions`
+--
+ALTER TABLE `student_revisions`
+  ADD CONSTRAINT `student_revisions_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`code_st`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `student_revisions_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `student_revisions_ibfk_3` FOREIGN KEY (`exam_id`) REFERENCES `exams` (`exam_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `subjects`
