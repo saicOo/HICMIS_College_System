@@ -16,7 +16,12 @@ if(isset($_GET['ref'])){
     // *********** get data  Material and Subject index of Lecture ***************//
     $material = new Material;
     $mateRow = $material->show($mate_id);
-    if(empty($mateRow)) header('location:/admin_panal/500/');
+    if(empty($mateRow) || empty($lectRow)){
+        $_SESSION['break'] = "A breach has occurred in the system, 
+    and the error has been sent to the administrator";
+      header('location:/student_panal/');
+      exit;
+    } 
     
     $material_name = $mateRow['description'];
     $sub_name = $mateRow['name'];
@@ -25,11 +30,18 @@ if(isset($_GET['ref'])){
     $lev_name = $mateRow['lev_name'];
 }
 catch(Exception $e) {
-    header('location:/admin_panal/500/');
-}
-}else{
-    header('location:/admin_panal/500/');
-}
+    $_SESSION['break'] = "A breach has occurred 
+    in the system, and the error has been sent to 
+    the administrator";
+    header('location:/student_panal/');
+    exit;
+  }
+  }else{
+    $_SESSION['break'] = "A breach has occurred in the system, 
+    and the error has been sent to the administrator";
+      header('location:/student_panal/');
+      exit;
+  }
 #########################################################
         // <!-- start header area -->
 require_once PAGE_PATH."/../layouts/header.php"; 

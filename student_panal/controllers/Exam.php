@@ -138,5 +138,18 @@ public function checkTimer($exam_id){
                     exit;
                 }
 }
+###############################################################
+########################     show timer ajax      ########
+public function checkEnroll($exam_id){
+    $student_id = $_SESSION['code_std'];
+                    $sql = "SELECT attendance_status
+                    FROM `enroll` 
+                    WHERE student_id = $student_id AND exam_id = $exam_id";
+                   $result = $this->conn->query($sql);
+                   return $result->fetch(PDO::FETCH_ASSOC)['attendance_status'];
+                       
+                   
+                
+}
 
 }

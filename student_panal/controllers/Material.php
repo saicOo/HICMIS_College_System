@@ -8,9 +8,14 @@ class Material extends Connect{
 ###############################################################
 ########################     display all materials     ########
     public function display($sub_id){
+        try{
         $sql = "SELECT * FROM `material` WHERE `sub_id` = '$sub_id' ORDER BY date_mat";
         $result = $this->conn->query($sql);
         return $result;
+    }catch(Exception $e) {
+        header('location:/admin_panal/500/');
+        exit;
+    }
     }
 
 ###############################################################

@@ -8,6 +8,7 @@ new Auth;
 $exam = new Exam;
 
 $exams= $exam->displayExam();
+
 date_default_timezone_set('Canada/Pacific');
 #########################################################
         // <!-- start header area -->
@@ -65,7 +66,15 @@ require_once PAGE_PATH."/../layouts/header.php";
                 </p>
               </div>
               <?php if($item['status'] === "created"): ?>
+                <?php if($exam->checkEnroll($item['exam_id']) === "completed"): ?>
+                <h5><span>Finish Exam !!!!</span></h5>
+                <?php else: ?>
+
                 <h5><a href="/student_panal/padges/exam/?ref=<?php echo $item['exam_id'] ."&page=1"?>">Start Exam</a></h5>
+
+                <?php endif ?>
+
+
                 <?php else: ?>
                   <h5><span>Waiting ... </span></h5>
                   <?php endif ?>

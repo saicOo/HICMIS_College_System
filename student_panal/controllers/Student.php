@@ -42,15 +42,11 @@ class Student extends Connect{
 ###############################################################
 ########################     display single student    ########
     public function show($code_std){
-        try{
         $sql = "SELECT code_st,national,student.name,address,phone,gender,birthday,lev_id,levels.name AS lev_name 
         FROM `student` JOIN `levels` ON student.lev_id = levels.id WHERE `code_st` = '$code_std'";
         $result = $this->conn->query($sql);
          return $result->fetch(PDO::FETCH_ASSOC);
-        }
-         catch(Exception $e) {
-            header('location:/admin_panal/500/');
-        }
+
     }
 ###############################################################
 ########################     display single student    ########

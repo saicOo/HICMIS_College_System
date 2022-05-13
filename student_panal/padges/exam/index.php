@@ -23,7 +23,18 @@ if(isset($_GET['ref'])){
     $ques_id = $question['question_id'];
     $option = $exam->option($ques_id);
     shuffle($option);
-}
+    if(empty($question) || empty($examRow)){
+        $_SESSION['break'] = "A breach has occurred in the system, 
+    and the error has been sent to the administrator";
+      header('location:/student_panal/');
+      exit;
+    } 
+}else{
+    $_SESSION['break'] = "A breach has occurred in the system, 
+    and the error has been sent to the administrator";
+      header('location:/student_panal/');
+      exit;
+  }
 // **********************************************************//
 // ******** Go to the next page and save the answer ******** //
 if(isset($_POST['next'])){

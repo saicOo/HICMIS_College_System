@@ -12,13 +12,15 @@ if(isset($_GET['ref'])){
       $ref_id = $_GET['ref'];
       $presence = new Presence;
       $presence->addPresence($ref_id);
+      
 // ********** display all data Material index of Subject ***********//
     $material = new Material;
     $disblaymaterial = $material->display($ref_id);
+  
 // *********** get data  Subject and Level index of Material ***************//
     $subject = new Subject;
     $subjectRow = $subject->show($ref_id);
-    if(empty($subjectRow)) header('location:/admin_panal/500/');
+  
     $sub_name = $subjectRow['name'];
     $lev_name = $subjectRow['lev_name'];
     $lev_id = $subjectRow['lev_id'];
@@ -27,12 +29,25 @@ if(isset($_GET['ref'])){
 $lectures = new Lecture;
 
 // **********************************************************//
+if(empty($presence) || empty($disblaymaterial) || empty($subjectRow)){
+  $_SESSION['break'] = "A breach has occurred in the system, 
+and the error has been sent to the administrator";
+header('location:/student_panal/');
+exit;
+}
 }
 catch(Exception $e) {
-    // header('location:/admin_panal/500/');
+  $_SESSION['break'] = "A breach has occurred 
+  in the system, and the error has been sent to 
+  the administrator";
+  header('location:/student_panal/');
+  exit;
 }
 }else{
-    // header('location:/admin_panal/500/');
+  $_SESSION['break'] = "A breach has occurred in the system, 
+  and the error has been sent to the administrator";
+    header('location:/student_panal/');
+    exit;
 }
 
 #########################################################

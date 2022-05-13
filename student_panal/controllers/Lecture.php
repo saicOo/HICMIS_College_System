@@ -15,16 +15,13 @@ class Lecture extends Connect{
     ###############################################################
 ########################     show single material   ########
 public function show($lecture_id){
-    try{
+    
 $sql = "SELECT *,IF(typ = 2, 'section' ,'lecture') as `type` FROM `lectures` WHERE lecture_id = '$lecture_id'";
 $result = $this->conn->query($sql);
  return $result->fetch(PDO::FETCH_ASSOC);
 }
-catch(Exception $e) {
-   header('location:/admin_panal/500/');
-}
+
 }
 
 
     
-}

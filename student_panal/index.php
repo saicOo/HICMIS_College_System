@@ -40,9 +40,15 @@ require_once "./layouts/header.php";
     <div class="row justify-content-center section-title">
       <div class="col-lg-12">
         <h2>
-         HICMIS <br>
-          
+         HICMIS
         </h2>
+        <?php if(isset( $_SESSION['break'])): ?>
+          <h2 class="text-danger">
+            <?php echo $_SESSION['break'] ;
+            unset($_SESSION['break']);
+            ?>
+        </h2>
+        <?php endif ?>
         <p>
           Dear children are students of the High Institute of Computing and Management Information Systems.
           Welcome to the website of the High Institute for Computing and Management Information Systems, wishing you success.
