@@ -6,8 +6,10 @@ function __autoload($class){
 }
 new Auth;
 $Level = new Level;
+// get all levels
 $displayLev = $Level->display();
 $exam = new Exam;
+// store new exam
 if(isset($_POST['submit'])){
     $sub_id = isset($_POST['sub_id']) ?$_POST['sub_id'] :"";
     $request = array(
@@ -18,9 +20,7 @@ if(isset($_POST['submit'])){
         'lev_id'=> $_POST['lev_id'],
         'sub_id'=>  $sub_id,
     );
-
  $exam->store($request);
-
 }
 #########################################################
 // <!-- Start head area -->
@@ -86,7 +86,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad">
-                                                    <form method="POST" class="dropzone dropzone-custom needsclick add-professors" id="demo1-upload">
+                                                    <form method="POST" class="dropzone dropzone-custom needsclick add-professors" id="demo1-upload" autocomplete="off">
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
@@ -119,7 +119,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <select name="sub_id" class="form-control subjects">
-                                                                    																		
+                                                                    <option>-- Select Subject --</option>														
 																		</select>
                                                                 </div>
                                                                 <div class="form-group">

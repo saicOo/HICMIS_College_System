@@ -8,24 +8,32 @@ new Auth;
 $exam = new Exam;
 if(isset($_GET['ref'])){
     $exam_id = $_GET['ref'];
+    // **********************************************************//
+// ******** If I click to finish the exam, it will return a value true ******** //
     $finish = isset($_POST['finish']) ? true : false;
     $exam->enrollExam($exam_id,$finish);
-
+ // **********************************************************//
+// ******** Make sure to return to the start page ******** //
     $page = isset($_GET['page'])?$_GET['page']:1;
     $examRow =  $exam->showExam($exam_id);
-     
     // $page = $_GET['page'];
+    // **********************************************************//
+// ******** show single question index of exam and page ******** //
     $question = $exam->showQuestion($exam_id,$page);
     $ques_id = $question['question_id'];
     $option = $exam->option($ques_id);
     shuffle($option);
 }
+// **********************************************************//
+// ******** Go to the next page and save the answer ******** //
 if(isset($_POST['next'])){
     $exam_id = $_GET['ref'];
     $page = $_GET['page'];
     $option =  $_POST['option'];
     $exam->saveAnswarNext($exam_id,$page,$ques_id,$option);
 }
+// **********************************************************//
+// ******** Go to the previous page and save the answer ******** //
 if(isset($_POST['prev'])){
     $exam_id = $_GET['ref'];
     $page = $_GET['page'];
@@ -201,4 +209,3 @@ $(document).ready(function(){
   });
 
 </script>
-<!-- $exam->enrollExam($exam_id); -->

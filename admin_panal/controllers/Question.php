@@ -19,7 +19,7 @@ class Question extends Connect{
     }
 
 ###############################################################
-########################     store exam             ########
+########################     store question,option     ########
     public function store($request){
         $exam_id=  $request['exam_id'];
         $question_title=  $request['question_title'];

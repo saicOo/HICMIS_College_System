@@ -58,13 +58,13 @@ require_once "./layouts/header.php";
         </div>
         <div class="details">
           <div class="d-flex justify-content-between mb-20">
-            <p class="name"><?php echo date("Y/m/d h:i A", strtotime($item['pres_date'])) ?>  اخر دخول للطالب</p>
+            <p class="name">Student's last entry : <?php echo isset($item['pres_date'])? date("Y/m/d h:i A", strtotime($item['pres_date'])):" Not logged in" ?></p>
           </div>
           <a href="/student_panal/padges/subject/?ref=<?php echo $item['id'] ?>">
               <h4><?php echo $item['name'] ?></h4>
             </a>
               <div class="bottom d-flex mt-15">
-                <p class="ml-20"><?php echo $subject->countMaterial($item['id']) ?> عدد المحاضرات</p>
+                <p class="ml-20">number of lectures : <?php echo $subject->countMaterial($item['id']) ?></p>
               </div>
             </div>
       </div>
@@ -77,7 +77,7 @@ require_once "./layouts/header.php";
           <div class="d-flex justify-content-between mb-20">
           </div>
           <a href="/student_panal/padges/exam/exams.php">
-              <h4>اختبار الامتحانات</h4>
+              <h4>Exams</h4>
             </a>
               <div class="bottom d-flex mt-15">
               </div>

@@ -1287,7 +1287,7 @@ width: 40px;
   @media (max-width: 991px) {
     .registration-area {
       padding: 60px 0px;
-      background: #f81c1c; } }
+       } }
   .registration-area .section-title {
     padding-bottom: 0; }
   .registration-area .course-form-section {

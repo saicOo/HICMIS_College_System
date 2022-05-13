@@ -3,8 +3,8 @@ require_once "Connect.php";
 class Revision extends Connect{
 
 
-###############################################################
-########################     display all exams      ########
+####################################################################
+########################     display all revistion exams     ########
 public function display($exam_id){
     $sql = "SELECT student_revisions.student_id,student_revisions.exam_id,student_revisions.marks,student_revisions.question_id,
     question.question_title,student_revisions.answar_option,exams.subject_id 
@@ -17,7 +17,7 @@ public function display($exam_id){
     return $result;
 }
 ###############################################################
-########################     display exams of level      ########
+########################     display exams of students      ########
     public function ExamsOfStudents($exam_id){
         $sql = "SELECT student.name,student_revisions.student_id,exams.exam_title,exams.total_question, 
         SUM(student_revisions.marks) AS mark 
@@ -29,7 +29,7 @@ public function display($exam_id){
         return $result;
     }
 ###############################################################
-########################     display exams of level      ########
+########################     result exam student      ########
     public function resultStudent($exam_id,$student_id){
         $sql = "SELECT student_revisions.student_id,student_revisions.marks,student_revisions.question_id, question.question_title,student_revisions.answar_option 
         FROM `student_revisions` 

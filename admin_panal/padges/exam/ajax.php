@@ -1,7 +1,7 @@
 <?php 
 if(isset($_POST['lev'])){
     
-    function tests(){
+    function getSubject(){
         $host = "localhost";
         $db ="hicmis_system";
         $user ="root";
@@ -25,7 +25,7 @@ if(isset($_POST['lev'])){
            *  ],
            * */
 
-           /** Structure Array In JavaScript
+           /** Structure Array In Json
            *  [
            *    0 : {
            *          id : 75,
@@ -39,6 +39,6 @@ if(isset($_POST['lev'])){
            * */
     }
      
-    echo tests();
+    echo getSubject();
         
     }

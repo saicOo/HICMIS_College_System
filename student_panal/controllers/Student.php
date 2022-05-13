@@ -64,12 +64,4 @@ class Student extends Connect{
          return $result;
         }
 
-###############################################################
-########################     delete current student    ########
-    public function destroy($id){
-        $sql = "DELETE FROM student WHERE `id` = '$id'";
-        $result = $this->conn->exec($sql);
-        header("Refresh:0");
-    }
-
 }

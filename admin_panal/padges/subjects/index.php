@@ -98,7 +98,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="basic-login-inner inline-basic-form">
-                                                <form method="POST">
+                                                <form method="POST" autocomplete="off">
                                                     <div class="form-group-inner">
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">

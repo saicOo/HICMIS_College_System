@@ -32,10 +32,12 @@ class Lecture extends Connect{
         /********************************************
         *** check inputs length
         */
-        if(strlen($lecture_name) > 200) $this->messErrors[] = "the lecture name max length char 50";
+        if(strlen($lecture_name) > 200) $this->messErrors[] = "the lecture name max length char 200";
         /********************************************
         *** check validation inputs
         */
+        if ($lecture_type != "video/mp4")$this->messErrors[] = "The lecture type not mp4";
+
         if (file_exists($location . $lecture_name))$this->messErrors[] = "This lecture already exists";
     // #### Check for errors ####
     if(empty($this->messErrors)){

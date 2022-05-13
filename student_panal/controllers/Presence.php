@@ -1,12 +1,13 @@
 <?php
 require_once "Connect.php";
 class Presence extends Connect{
-// insert new Presence
+##########################################################################################
+########################  Registration of student attendance of study materials   ########
     public function addPresence($sub_id){
         $code_std = $_SESSION['code_std'];
 
 
-// check admin if exists
+// check presences if exists
 $check = "SELECT * FROM `presences` WHERE `std_id` = $code_std AND `sub_id` = $sub_id";
 $result  = $this->conn->query($check);
 $row = $result->fetch(PDO::FETCH_ASSOC);

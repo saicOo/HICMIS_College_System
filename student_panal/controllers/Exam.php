@@ -126,6 +126,8 @@ public function enrollExam($exam_id,$finish){
         }
     
 }
+###############################################################
+########################     check timer ajax      ########
 public function checkTimer($exam_id){
     $student_id = $_SESSION['code_std'];
                // if($_SESSION['unroll'] <= date("Y-m-d h:i A")|| $row['attendance_status'] === "completed"){

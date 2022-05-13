@@ -10,17 +10,22 @@ $exam->checkDateEaxam();
 $exams =  $exam->display();
 $level = new Level;
 $levels =  $level->display();
-
+// **********************************************************//
+// ******** change created exam ******** //
 if(isset($_POST['pending'])){
     $exam_id = $_POST['exam_id'];
     $status = "created";
     $exam->status($exam_id,$status);
 }
+// **********************************************************//
+// ******** change pending exam ******** //
 if(isset($_POST['created'])){
     $exam_id = $_POST['exam_id'];
     $status = "pending";
     $exam->status($exam_id,$status);
 }
+// **********************************************************//
+// ******** display exams index of level ******** //
 if(isset($_GET['change'])){
     $level_id = $_GET['level'];
     $exams =  $exam->displayOfLevel($level_id);
@@ -87,11 +92,12 @@ require_once PAGE_PATH."/../layouts/header.php";
                                     <tr>
                                         <th>ID</th>
                                         <th>Title</th>
-                                        <th>datetime</th>
-                                        <th>duration</th>
+                                        <th>Created At</th>
+                                        <th>Expiry Date</th>
+                                        <th>Duration</th>
                                         <th>Question</th>
                                         <th>No Question</th>
-                                        <th>status</th>
+                                        <th>Status</th>
                                         <th>Setting</th>
                                     </tr>
                                     <?php
@@ -101,11 +107,12 @@ require_once PAGE_PATH."/../layouts/header.php";
                                     <tr>
                                         <td><?php echo $item['exam_id'] ?></td>
                                         <td><?php echo $item['exam_title'] ?></td>
+                                        <td><?php echo date("Y-m-d h:i A", strtotime($item['created_at']))  ?></td>
                                         <td><?php echo date("Y-m-d h:i A", strtotime($item['exam_datetime']))  ?></td>
                                         <td><?php echo $item['exam_duration'] ?></td>
                                         <td><a href="/admin_panal/padges/question/index.php?ref=<?php echo $item['exam_id'] ?>"> show</a></td>
                                         <td><?php echo $quesCuont ." Of ". $item['total_question'] ?></td>
-                                        <td><?php echo $item['status'] ?></td>
+                                        <td><span class="ps-setting"><?php echo $item['status'] ?></span></td>
                                         <td>
                                             <?php if($item['total_question'] <= $quesCuont): ?>
                                             <form method="post">

@@ -21,13 +21,5 @@ class Level extends Connect{
            exit;
        }
     }
-    // // insert new levels
-    // public function store($request){
-    //     $name = $request['name'];
-    //     $email = $request['email'];
-    //     $password = $request['password'];
-    //     $sql = "INSERT INTO `levels`(`id`, `name`, `email`, `password`) VALUES (null,'$name','$email','$password')";
-    //     $result = $this->conn->exec($sql);
-    //     header('location:/hicmis_system');
-    // }
+
 }
