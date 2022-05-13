@@ -6,8 +6,8 @@ function __autoload($class){
 }
 new Auth;
 $exam = new Exam;
-$exams =  $exam->display();
 $exam->checkDateEaxam();
+$exams =  $exam->display();
 $level = new Level;
 $levels =  $level->display();
 
@@ -25,7 +25,12 @@ if(isset($_GET['change'])){
     $level_id = $_GET['level'];
     $exams =  $exam->displayOfLevel($level_id);
 }
-
+// **********************************************************//
+// ******** If delete, delete a exam ******** //
+if(isset($_GET['destroy'])){
+    $exam_id = $_GET['destroy'];
+    $exam->destroy($exam_id);
+}
 #########################################################
 // <!-- Start head area -->
 require_once PAGE_PATH."/../layouts/head.php";
@@ -96,7 +101,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                     <tr>
                                         <td><?php echo $item['exam_id'] ?></td>
                                         <td><?php echo $item['exam_title'] ?></td>
-                                        <td><?php echo $item['exam_datetime'] ?></td>
+                                        <td><?php echo date("Y-m-d h:i A", strtotime($item['exam_datetime']))  ?></td>
                                         <td><?php echo $item['exam_duration'] ?></td>
                                         <td><a href="/admin_panal/padges/question/index.php?ref=<?php echo $item['exam_id'] ?>"> show</a></td>
                                         <td><?php echo $quesCuont ." Of ". $item['total_question'] ?></td>
@@ -107,11 +112,15 @@ require_once PAGE_PATH."/../layouts/header.php";
                                                 <?php if($item['status'] == "pending"): ?>
                                                     <input type="hidden" name="exam_id" value="<?php echo $item['exam_id'] ?>">
                                                     <button name="pending" class="btn btn-custon-rounded-three btn-success" ><i class="fa fa-check edu-checked-pro" aria-hidden="true"></i> created</button>
-                                                    <?php else: ?>
+                                                    <?php elseif($item['status'] == "created"): ?>
                                                         <input type="hidden" name="exam_id" value="<?php echo $item['exam_id'] ?>">
                                                         <button name="created" class="btn btn-custon-rounded-three btn-danger"><i class="fa fa-times edu-danger-error" aria-hidden="true"></i> pending</button>
+                                                        <?php else: ?>
+                                                            <a href="/admin_panal/padges/exam/result_exam.php?ref=<?php echo $item['exam_id'] ?>">Show Result</a>
                                                         <?php endif ?>
                                                     </form>
+                                                    <?php else: ?>
+                                                        <a data-toggle="tooltip" title="delete"href="?destroy=<?php echo $item['exam_id']?>" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     <?php endif ?>
                                         </td>
                                     </tr>

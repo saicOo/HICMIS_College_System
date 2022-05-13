@@ -69,7 +69,8 @@ if(isset($_GET['logout'])){
 							</a>
               
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="blog-home.html">Student Data</a>
+								<a class="dropdown-item" href="/student_panal/padges/student/profile.php">My profile</a>
+								<a class="dropdown-item" href="/student_panal/padges/student/result.php">View Result</a>
 								<a class="dropdown-item" href="?logout">log out</a>
 							</div>
 						</li>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2022 at 02:26 PM
+-- Generation Time: May 13, 2022 at 04:35 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -48,6 +48,29 @@ INSERT INTO `admin` (`id`, `name`, `email`, `password`, `role`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `enroll`
+--
+
+CREATE TABLE `enroll` (
+  `enroll_id` bigint(20) NOT NULL,
+  `student_id` bigint(20) NOT NULL,
+  `exam_id` bigint(20) NOT NULL,
+  `attendance_status` enum('attend','completed') NOT NULL DEFAULT 'attend',
+  `exam_end_time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `enroll`
+--
+
+INSERT INTO `enroll` (`enroll_id`, `student_id`, `exam_id`, `attendance_status`, `exam_end_time`) VALUES
+(24, 6489, 5, 'completed', NULL),
+(38, 9757, 5, 'completed', '2022-05-12 04:55:00'),
+(39, 8799, 5, 'completed', '2022-05-12 05:16:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `exams`
 --
 
@@ -57,7 +80,7 @@ CREATE TABLE `exams` (
   `exam_datetime` datetime NOT NULL,
   `exam_duration` varchar(50) NOT NULL,
   `total_question` int(3) NOT NULL,
-  `status` enum('pending','completed') NOT NULL DEFAULT 'pending',
+  `status` enum('pending','completed','created') NOT NULL DEFAULT 'pending',
   `level_id` bigint(20) NOT NULL,
   `subject_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -67,9 +90,8 @@ CREATE TABLE `exams` (
 --
 
 INSERT INTO `exams` (`exam_id`, `exam_title`, `exam_datetime`, `exam_duration`, `total_question`, `status`, `level_id`, `subject_id`) VALUES
-(1, 'امتحان قواعد بيانات الفرقة الاولي', '2022-05-06 17:19:00', '5 Minute', 5, 'pending', 1, 75),
-(2, 'امتحان احصاء الفرقة الثانية', '2022-05-10 22:21:00', '30 Minute', 5, 'pending', 2, 79),
-(3, 'امتحان محاسبة الفرقة الاولي', '2022-05-10 11:31:00', '5 Minute', 5, 'pending', 1, 77);
+(4, 'امتحان تكاليف الفرقة الاولي', '2022-05-11 02:15:00', '5 Minute', 5, 'completed', 1, 80),
+(5, 'امتحان محاسبة', '2022-05-11 12:58:00', '5 Minute', 5, 'completed', 1, 77);
 
 -- --------------------------------------------------------
 
@@ -156,22 +178,46 @@ CREATE TABLE `option` (
 --
 
 INSERT INTO `option` (`option_id`, `question_id`, `option_number`, `option_title`) VALUES
-(1, 1, 1, 'طه حسين'),
-(2, 1, 2, 'فريد شوقي'),
-(3, 1, 3, 'فؤاد المهندس'),
-(4, 1, 4, 'اجابة اخري'),
-(5, 2, 1, 'باريس'),
-(6, 2, 2, 'برشلونه'),
-(7, 2, 3, 'ريال مدريد'),
-(8, 2, 4, 'الاهلي'),
-(9, 3, 1, 'ممثل'),
-(10, 3, 2, 'رجل اعمال'),
-(11, 3, 3, 'لا شئ مما سبق'),
-(12, 3, 4, 'مطرب شعبي'),
-(13, 4, 1, 'باريس'),
-(14, 4, 2, 'فريد شوقي'),
-(15, 4, 3, 'ريال مدريد'),
-(16, 4, 4, 'مطرب شعبي');
+(17, 5, 1, '1'),
+(18, 5, 2, '6'),
+(19, 5, 3, '9'),
+(20, 5, 4, '3'),
+(21, 6, 1, 'طه حسين'),
+(22, 6, 2, 'فريد شوقي'),
+(23, 6, 3, 'لا شئ مما سبق'),
+(24, 6, 4, 'الاهلي'),
+(25, 7, 1, '4'),
+(26, 7, 2, '585'),
+(27, 7, 3, '8797'),
+(28, 7, 4, 'لا شئ مما سبق'),
+(29, 8, 1, 'باريس'),
+(30, 8, 2, 'برشلونه'),
+(31, 8, 3, 'ريال مدريد'),
+(32, 8, 4, 'الاهلي'),
+(33, 9, 1, 'سسس'),
+(34, 9, 2, 'ئئئ'),
+(35, 9, 3, 'ببب'),
+(36, 9, 4, 'يي'),
+(37, 10, 1, 'باريس'),
+(38, 10, 2, 'فريد شوقي'),
+(39, 10, 3, 'لا شئ مما سبق'),
+(40, 10, 4, 'الاهلي'),
+(41, 11, 1, '1'),
+(42, 11, 2, '7'),
+(43, 11, 3, '9'),
+(44, 11, 4, '3'),
+(45, 12, 1, 'ممثل'),
+(46, 12, 2, 'رجل اعمال'),
+(47, 12, 3, 'ريال مدريد'),
+(48, 12, 4, 'مطرب شعبي'),
+(49, 13, 1, 'طه حسين'),
+(50, 13, 2, 'فريد شوقي'),
+(51, 13, 3, 'فؤاد المهندس'),
+(52, 13, 4, 'لا شئ مما سبق'),
+(53, 14, 1, 'ممثل'),
+(54, 14, 2, 'ئئئ'),
+(55, 14, 3, 'لا شئ مما سبق'),
+(56, 14, 4, 'اجابة اخري');
 
 -- --------------------------------------------------------
 
@@ -197,10 +243,15 @@ INSERT INTO `presences` (`pres_id`, `std_id`, `sub_id`, `presence_count`, `pres_
 (3, 32131, 75, 2, '2022-05-09 22:54:56'),
 (4, 3232, 76, 5, '2022-05-05 11:30:26'),
 (5, 32131, 77, 5, '2022-05-05 12:42:40'),
-(6, 8799, 75, 1, '2022-05-05 13:31:42'),
+(6, 8799, 75, 2, '2022-05-13 02:32:40'),
 (7, 8799, 76, 1, '2022-05-05 13:31:01'),
 (8, 333, 75, 4, '2022-05-05 23:59:42'),
-(9, 333, 77, 1, '2022-05-05 23:30:48');
+(9, 333, 77, 1, '2022-05-05 23:30:48'),
+(10, 6489, 75, 1, '2022-05-11 08:43:10'),
+(11, 6489, 77, 1, '2022-05-12 02:48:22'),
+(12, 9757, 75, 1, '2022-05-12 23:27:26'),
+(13, 9757, 77, 1, '2022-05-12 23:53:00'),
+(14, 8799, 77, 1, '2022-05-13 01:44:40');
 
 -- --------------------------------------------------------
 
@@ -220,10 +271,16 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`question_id`, `exam_id`, `question_title`, `answer_option`) VALUES
-(1, 1, 'من الذي قتل علي بيه الكبير', '4'),
-(2, 1, 'احسن نادي في اروبا', '4'),
-(3, 1, 'من هو نيوتين', '3'),
-(4, 3, 'من هو نيوتين', '3');
+(5, 4, '4  - 3 =', '1'),
+(6, 4, 'من قائل هذه العبارة', '3'),
+(7, 4, 'السمبلويين', '4'),
+(8, 4, 'احسن نادي في اروبا', '4'),
+(9, 4, 'شنيبمشكحيب', '1'),
+(10, 5, 'احسن نادي في اروبا', '3'),
+(11, 5, '4  - 3 =', '2'),
+(12, 5, 'من قائل هذه العبارة', '2'),
+(13, 5, 'من الذي قتل علي بيه الكبير', '3'),
+(14, 5, 'من هو نيوتين', '4');
 
 -- --------------------------------------------------------
 
@@ -257,9 +314,9 @@ INSERT INTO `student` (`code_st`, `national`, `name`, `address`, `phone`, `gende
 (5546, 5464654, 'saf', 'gizza', '11111111111', '', '1995-08-17', 'accept', 1),
 (6489, 15648921648645, 'ahmed sfgsdfg', 'city nassir', '11111111111', 'male', '1998-10-20', 'accept', 1),
 (6589, 15489721354600, 'sayed', 'city nassir', '01666664486', 'male', '1995-12-28', 'not accept', 2),
-(8799, 54978246852132, 'ashraf', 'gizza', '01245459112', 'male', '1996-08-21', 'not accept', 1),
+(8799, 54978246852132, 'ashraf', 'gizza', '01245459112', 'male', '1996-08-21', 'accept', 1),
 (8888, 15489721354689, 'شهد', 'مصر الجديدة', '11111111111', 'female', '1994-08-19', 'accept', 1),
-(9757, 12345679814562, 'omar', 'gizza', '01666664486', 'male', '1998-10-27', 'not accept', 1),
+(9757, 12345679814562, 'omar', 'gizza', '01666664486', 'male', '1998-10-27', 'accept', 1),
 (9895, 12345687921366, 'loay', 'cairo', '11111111111', 'male', '1999-10-11', 'accept', 2),
 (9999, 12354897216452, 'khaled', 'gizza', '11111111111', 'male', '1999-10-11', 'accept', 2),
 (32131, 555, 'sayed', 'city nassir', '01245459112', '', '1995-03-09', 'accept', 1);
@@ -276,7 +333,7 @@ CREATE TABLE `student_revisions` (
   `exam_id` bigint(20) NOT NULL,
   `question_id` bigint(20) NOT NULL,
   `answar_option` enum('1','2','3','4') NOT NULL,
-  `marks` varchar(50) NOT NULL
+  `marks` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -284,10 +341,16 @@ CREATE TABLE `student_revisions` (
 --
 
 INSERT INTO `student_revisions` (`revision_id`, `student_id`, `exam_id`, `question_id`, `answar_option`, `marks`) VALUES
-(1, 32131, 1, 2, '1', '- 5 mark'),
-(2, 32131, 1, 1, '4', '5 mark'),
-(3, 32131, 1, 3, '3', '5 mark'),
-(4, 5546, 3, 4, '3', '5 mark');
+(1, 9757, 5, 10, '3', '1 mark'),
+(2, 9757, 5, 11, '2', '1 mark'),
+(3, 9757, 5, 12, '2', '1 mark'),
+(4, 9757, 5, 13, '3', '1 mark'),
+(5, 9757, 5, 14, '2', '0 mark'),
+(6, 8799, 5, 10, '2', '0 mark'),
+(7, 8799, 5, 11, '2', '1 mark'),
+(8, 8799, 5, 12, '1', '0 mark'),
+(9, 8799, 5, 13, '4', '0 mark'),
+(10, 8799, 5, 14, '4', '1 mark');
 
 -- --------------------------------------------------------
 
@@ -323,6 +386,14 @@ INSERT INTO `subjects` (`id`, `name`, `lev_id`) VALUES
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `enroll`
+--
+ALTER TABLE `enroll`
+  ADD PRIMARY KEY (`enroll_id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `exam_id` (`exam_id`);
 
 --
 -- Indexes for table `exams`
@@ -409,10 +480,16 @@ ALTER TABLE `admin`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `enroll`
+--
+ALTER TABLE `enroll`
+  MODIFY `enroll_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
 -- AUTO_INCREMENT for table `exams`
 --
 ALTER TABLE `exams`
-  MODIFY `exam_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `exam_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `lectures`
@@ -436,25 +513,25 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT for table `option`
 --
 ALTER TABLE `option`
-  MODIFY `option_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `option_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `presences`
 --
 ALTER TABLE `presences`
-  MODIFY `pres_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `pres_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `question_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `question_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `student_revisions`
 --
 ALTER TABLE `student_revisions`
-  MODIFY `revision_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `revision_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `subjects`
@@ -465,6 +542,13 @@ ALTER TABLE `subjects`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `enroll`
+--
+ALTER TABLE `enroll`
+  ADD CONSTRAINT `enroll_ibfk_1` FOREIGN KEY (`exam_id`) REFERENCES `exams` (`exam_id`),
+  ADD CONSTRAINT `enroll_ibfk_2` FOREIGN KEY (`student_id`) REFERENCES `student` (`code_st`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `exams`

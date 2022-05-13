@@ -7,7 +7,7 @@ class Exam extends Connect{
 ###############################################################
 ########################     checkDateEaxam all exams      ########
     public function checkDateEaxam(){
-        $sql = "SELECT exam_id,exam_datetime FROM `exams` ";
+        $sql = "SELECT exam_id,exam_datetime FROM `exams`";
         $exams = $this->conn->query($sql);  
         date_default_timezone_set('Canada/Pacific');
         foreach ($exams as $item) {
@@ -21,7 +21,7 @@ class Exam extends Connect{
 ###############################################################
 ########################     display all exams      ########
     public function display(){
-        $sql = "SELECT * FROM `exams` ";
+        $sql = "SELECT * FROM `exams` ORDER BY exam_id DESC";
         $result = $this->conn->query($sql);        
         return $result;
     }
@@ -97,8 +97,16 @@ public function status($exam_id,$status){
     $result = $this->conn->exec($sql);
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 } 
+###############################################################
+########################     delete Exam  ########
+public function destroy($exam_id){
+
+        $sql = "DELETE FROM exams WHERE `exam_id` = $exam_id";
+        $result = $this->conn->exec($sql);
+        
+        $_SESSION['success'] = "exam deleted successfully";
+        header('location:/admin_panal/padges/exam/');
+        exit;
+    
 }
-//  if(date("Y-m-d h:i A", strtotime($item['exam_datetime'])) <= date("Y-m-d h:i A") ){
-//      }else{
-//       <h5><span>Waiting ... </span></h5>
-//       }
+}

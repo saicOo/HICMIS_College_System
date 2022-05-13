@@ -53,6 +53,18 @@ class Student extends Connect{
         }
     }
 ###############################################################
+########################     display single student    ########
+    public function result($code_std){
+        
+        $sql = "SELECT SUM(student_revisions.marks) AS mark,exams.exam_title,exams.total_question 
+        FROM `student_revisions` JOIN `student` ON student.code_st = student_revisions.student_id 
+        JOIN `exams` ON exams.exam_id = student_revisions.exam_id 
+        WHERE student.code_st =$code_std GROUP BY student_revisions.exam_id";
+        $result = $this->conn->query($sql);
+         return $result;
+        }
+
+###############################################################
 ########################     delete current student    ########
     public function destroy($id){
         $sql = "DELETE FROM student WHERE `id` = '$id'";

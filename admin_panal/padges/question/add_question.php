@@ -94,10 +94,16 @@ require_once PAGE_PATH."/../layouts/header.php";
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <select name="exam_id" class="form-control">
-                                                                    <option value="">Select Level</option>
-                                                                    <?php foreach($displayExam as $item): ?>
+                                                                    <option value="">Select Exam</option>
+                                                                    <?php foreach($displayExam as $item): 
+                                                                        $quesCuont =  $exam->questionCount($item['exam_id'])['c'];
+                                                                        if($item['total_question'] > $quesCuont && $item['status'] === "pending"):
+                                                                        ?>
+                                                                         
                                                                         <option value="<?php echo $item['exam_id'] ?>"><?php echo $item['exam_title'] ?></option>
-                                                                        <?php endforeach ?>																			
+                                                                        <?php
+                                                                         endif; 
+                                                                        endforeach ?>																			
 																		</select>
                                                                 </div>
                                                                 

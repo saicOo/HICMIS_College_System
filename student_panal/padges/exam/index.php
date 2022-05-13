@@ -8,9 +8,12 @@ new Auth;
 $exam = new Exam;
 if(isset($_GET['ref'])){
     $exam_id = $_GET['ref'];
-    $student_id = $_SESSION['code_std'];
+    $finish = isset($_POST['finish']) ? true : false;
+    $exam->enrollExam($exam_id,$finish);
+
     $page = isset($_GET['page'])?$_GET['page']:1;
     $examRow =  $exam->showExam($exam_id);
+     
     // $page = $_GET['page'];
     $question = $exam->showQuestion($exam_id,$page);
     $ques_id = $question['question_id'];
@@ -21,14 +24,13 @@ if(isset($_POST['next'])){
     $exam_id = $_GET['ref'];
     $page = $_GET['page'];
     $option =  $_POST['option'];
-    $exam->saveAnswarNext($exam_id,$student_id,$page,$ques_id,$option);
-
+    $exam->saveAnswarNext($exam_id,$page,$ques_id,$option);
 }
 if(isset($_POST['prev'])){
     $exam_id = $_GET['ref'];
     $page = $_GET['page'];
     $option =  $_POST['option'];
-    $exam->saveAnswarPrev($exam_id,$student_id,$page,$ques_id,$option);
+    $exam->saveAnswarPrev($exam_id,$page,$ques_id,$option);
 }
 
 #########################################################
@@ -117,8 +119,8 @@ require_once PAGE_PATH."/../layouts/header.php";
         <h1 class="text-white">
         <?php echo $examRow['exam_title'] ?>
         </h1>
-        <p class="mx-auto text-white  mt-20 mb-40">
-          Welcome to EducationGive you lectures and Skation
+        <p class="mx-auto text-white  mt-20 mb-40" id="timer">
+          
         </p>
         <div class="link-nav">
           <span class="box">
@@ -178,3 +180,25 @@ require_once PAGE_PATH."/../layouts/header.php";
         <!-- start footer area -->
         <?php  require_once PAGE_PATH."/../layouts/footer.php"; ?>
         <!-- end footer area -->
+        <script type="text/javascript">
+    
+$(document).ready(function(){
+    var endTime ="<?php echo $examRow['exam_duration'] ?>";
+    var exam =<?php echo $examRow['exam_id'] ?>;
+    setInterval(() => {
+   
+        $.ajax({
+            url:"/student_panal/padges/exam/timerExam.php",
+            method:"post",
+            data:{duration:endTime,exam:exam},
+            
+            success:function(data){
+                $("#timer").html(data);
+            }
+        });
+    
+    }, 1);
+  });
+
+</script>
+<!-- $exam->enrollExam($exam_id); -->
