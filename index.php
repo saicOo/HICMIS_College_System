@@ -3,40 +3,40 @@ if(isset($_POST['create'])){
 $dirXampp= "C:/xampp/apache/conf/extra/httpd-vhosts.conf";
 $creatHostX = '<VirtualHost *:80>
 DocumentRoot "C:/xampp/htdocs/HICMIS"
-ServerName HICMIS
+ServerName hicmis
 </VirtualHost>';
 
 $dirAppServ= "C:/AppServ/Apache24/conf/extra/httpd-vhosts.conf";
 $creatHostS = '<VirtualHost *:80>
 DocumentRoot "C:/AppServ/www/HICMIS"
-ServerName HICMIS
+ServerName hicmis
 </VirtualHost>';
 
 $fileHost= "C:/Windows/System32/drivers/etc/hosts";
-$creatDomain= "127.0.0.1       HICMIS";
+$creatDomain= "127.0.0.1       hicmis";
 
 if(file_exists($dirXampp)){
 
-    file_put_contents($dirXampp,"\n".$creatHostS,FILE_APPEND);
+    file_put_contents($dirXampp,"\n".$creatHostX,FILE_APPEND);
     setcookie("domain","test");
 
 }elseif(file_exists($dirAppServ)){
 
-    file_put_contents($dirAppServ,"\n".$creatHostX,FILE_APPEND);
+    file_put_contents($dirAppServ,"\n".$creatHostS,FILE_APPEND);
     setcookie("domain","test");
     
 }else{
     echo "not found path";
 }
 
-if(file_exists($dirXampp)){
+if(file_exists($fileHost) && is_writable($fileHost)){
 
     file_put_contents($fileHost,"\n".$creatDomain,FILE_APPEND);
     
 }else{
-   echo "error";
+    setcookie("notFound","test");
 }
-header('location:/testFolder/#end');
+header('location:/HICMIS/#doc');
 }
 ?>
 <!DOCTYPE html>
@@ -198,7 +198,19 @@ header('location:/testFolder/#end');
                                 <button name="create" class="btn btn-create">Create Domain</button>
                             </form>
                             <?php endif ?>
-                </div>
+                        <?php if(isset($_COOKIE['notFound'])): ?>
+                            <h2 class="text-center text-danger">لم تكتمل العملية برجاء الذهاب الي هذا المسار
+                                <br>
+                            C:\Windows\System32\drivers\etc\
+                            <br>
+                            hostsوفتح ملف
+                            <br>
+                            notepadعن طريق
+                            <br>
+                            " 127.0.0.1       hicmis "ووضع هذا النص في النهاية
+                            </h2>
+                            <?php endif ?>
+                        </div>
             </div>
     </section>
 </body>
