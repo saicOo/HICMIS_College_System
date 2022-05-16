@@ -16,7 +16,7 @@ if(isset($_GET['ref'])){
 // *********** get data  Subject and Level index of Material ***************//
     $subject = new Subject;
     $subjectRow = $subject->show($ref_id);
-    if(empty($subjectRow)) header('location:/admin_panal/500/');
+    if(empty($subjectRow)) header('location:/HICMIS/admin_panal/500/');
     $sub_name = $subjectRow['name'];
     $lev_name = $subjectRow['lev_name'];
     $lev_id = $subjectRow['lev_id'];
@@ -40,10 +40,10 @@ if(isset($_GET['destroy'])){
   }
 }
 catch(Exception $e) {
-    header('location:/admin_panal/500/');
+    header('location:/HICMIS/admin_panal/500/');
 }
 }else{
-    header('location:/admin_panal/500/');
+    header('location:/HICMIS/admin_panal/500/');
 }
 
 #########################################################
@@ -63,9 +63,9 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu" style="text-align: left;">
-                                            <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
+                                            <li><a href="/HICMIS/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
-                                            <li><a href="/admin_panal/padges/subjects/?ref=<?php echo $lev_id ?>"><?php echo $lev_name ?></a> <span class="bread-slash">/</span>
+                                            <li><a href="/HICMIS/admin_panal/padges/subjects/?ref=<?php echo $lev_id ?>"><?php echo $lev_name ?></a> <span class="bread-slash">/</span>
                                             </li>
                                             <li><span class="bread-blod"><?php echo $sub_name ?></span>
                                             </li>
@@ -171,7 +171,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                         <td><?php echo $item['description'] ?></td>
                                         <td><?php echo $item['date_mat'] ?></td>
                                         <td><?php echo $sub_name ?></td>
-                                        <td><a href="/admin_panal/padges/lecture/?ref=<?php echo $item['id']?>"><i class="fa fa-info-circle edu-informatio" aria-hidden="true"></i> show</a></td>
+                                        <td><a href="/HICMIS/admin_panal/padges/lecture/?ref=<?php echo $item['id']?>"><i class="fa fa-info-circle edu-informatio" aria-hidden="true"></i> show</a></td>
                                         <td>
                                             <a  data-toggle="tooltip" title="delete"href="?ref=<?php echo $ref_id .'&destroy='.$item['id'].'&name='.$item['description'] ?>" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                         </td>

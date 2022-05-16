@@ -34,9 +34,9 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu" style="text-align: left;">
-                                            <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
+                                            <li><a href="/HICMIS/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
-                                            <li><a href="/admin_panal/padges/exam/">Exams</a> <span class="bread-slash">/</span>
+                                            <li><a href="/HICMIS/admin_panal/padges/exam/">Exams</a> <span class="bread-slash">/</span>
                                             </li>
                                             <li><span class="bread-blod"><?php echo $examRow['exam_title'] ?></span>
                                             </li>
@@ -81,7 +81,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                         <td><?php echo $item['mark'] ?></td>
                                         <td><?php echo $item['total_question'] ?></td>
                                         <td><?php echo $item['exam_title'] ?></td>
-                                        <td><a href="/admin_panal/padges/exam/result_student.php?ref=<?php echo $exam_id ."&code=".$item['student_id'] ?>">Show Result</a></td>
+                                        <td><a href="/HICMIS/admin_panal/padges/exam/result_student.php?ref=<?php echo $exam_id ."&code=".$item['student_id'] ?>">Show Result</a></td>
                                     </tr>
                                     <?php endforeach ?>
                                 </table>

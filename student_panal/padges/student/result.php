@@ -30,7 +30,7 @@ new Auth;
         </p>
         <div class="link-nav">
           <span class="box">
-            <a href="/student_panal/">Home </a>
+            <a href="/HICMIS/student_panal/">Home </a>
             <i class="lnr lnr-arrow-right"></i>
             <a href="#">Result Exams </a>
           </span>

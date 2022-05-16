@@ -62,7 +62,7 @@ public function show($material_id){
      return $result->fetch(PDO::FETCH_ASSOC);
     }
     catch(Exception $e) {
-       header('location:/admin_panal/500/');
+       header('location:/HICMIS/admin_panal/500/');
    }
 }
 
@@ -76,7 +76,7 @@ public function show($material_id){
 
         if(isset($ckechLocation[2])){
             $_SESSION['error'] = "The folder cannot be deleted because it contains other files";
-            header('location:/admin_panal/padges/material/?ref='.$sub_id);
+            header('location:/HICMIS/admin_panal/padges/material/?ref='.$sub_id);
             exit;
         }else{
             rmdir($location);
@@ -84,7 +84,7 @@ public function show($material_id){
             $result = $this->conn->exec($sql);
             
             $_SESSION['success'] = "material deleted successfully";
-            header('location:/admin_panal/padges/material/?ref='.$sub_id);
+            header('location:/HICMIS/admin_panal/padges/material/?ref='.$sub_id);
             exit;
         }
     }

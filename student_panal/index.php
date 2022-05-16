@@ -27,7 +27,7 @@ require_once "./layouts/header.php";
         </p>
         <div class="link-nav">
           <span class="box">
-            <a href="/student_panal/">Home </a>
+            <a href="/HICMIS/student_panal/">Home </a>
           </span>
         </div>
       </div>
@@ -66,7 +66,7 @@ require_once "./layouts/header.php";
           <div class="d-flex justify-content-between mb-20">
             <p class="name">Student's last entry : <?php echo isset($item['pres_date'])? date("Y/m/d h:i A", strtotime($item['pres_date'])):" Not logged in" ?></p>
           </div>
-          <a href="/student_panal/padges/subject/?ref=<?php echo $item['id'] ?>">
+          <a href="/HICMIS/student_panal/padges/subject/?ref=<?php echo $item['id'] ?>">
               <h4><?php echo $item['name'] ?></h4>
             </a>
               <div class="bottom d-flex mt-15">
@@ -82,7 +82,7 @@ require_once "./layouts/header.php";
         <div class="details">
           <div class="d-flex justify-content-between mb-20">
           </div>
-          <a href="/student_panal/padges/exam/exams.php">
+          <a href="/HICMIS/student_panal/padges/exam/exams.php">
               <h4>Exams</h4>
             </a>
               <div class="bottom d-flex mt-15">

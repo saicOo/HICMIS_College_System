@@ -54,7 +54,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu" style="text-align: left;">
-                                            <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
+                                            <li><a href="/HICMIS/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
                                             <li><span class="bread-blod">all Exam</span>
                                             </li>
@@ -110,7 +110,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                         <td><?php echo date("Y-m-d h:i A", strtotime($item['created_at']))  ?></td>
                                         <td><?php echo date("Y-m-d h:i A", strtotime($item['exam_datetime']))  ?></td>
                                         <td><?php echo $item['exam_duration'] ?></td>
-                                        <td><a href="/admin_panal/padges/question/index.php?ref=<?php echo $item['exam_id'] ?>"> show</a></td>
+                                        <td><a href="/HICMIS/admin_panal/padges/question/index.php?ref=<?php echo $item['exam_id'] ?>"> show</a></td>
                                         <td><?php echo $quesCuont ." Of ". $item['total_question'] ?></td>
                                         <td><span class="ps-setting"><?php echo $item['status'] ?></span></td>
                                         <td>
@@ -123,7 +123,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                                         <input type="hidden" name="exam_id" value="<?php echo $item['exam_id'] ?>">
                                                         <button name="created" class="btn btn-custon-rounded-three btn-danger"><i class="fa fa-times edu-danger-error" aria-hidden="true"></i> pending</button>
                                                         <?php else: ?>
-                                                            <a href="/admin_panal/padges/exam/result_exam.php?ref=<?php echo $item['exam_id'] ?>">Show Result</a>
+                                                            <a href="/HICMIS/admin_panal/padges/exam/result_exam.php?ref=<?php echo $item['exam_id'] ?>">Show Result</a>
                                                         <?php endif ?>
                                                     </form>
                                                     <?php else: ?>

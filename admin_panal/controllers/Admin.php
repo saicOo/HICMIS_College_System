@@ -41,7 +41,7 @@ class Admin extends Connect{
                 $_SESSION['adminName'] = $row['name'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['role'] = $row['role'];
-                header('location:/admin_panal/');
+                header('location:/HICMIS/admin_panal/');
             }else{
                 return $this->messErrors;
             }  

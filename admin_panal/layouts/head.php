@@ -2,7 +2,7 @@
 if(isset($_GET['logout'])){
     session_unset();
     session_destroy();
-    header('location:/admin_panal/padges/auth/login.php');
+    header('location:/HICMIS/admin_panal/padges/auth/login.php');
     exit;
   }
 ?>
@@ -16,75 +16,75 @@ if(isset($_GET['logout'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
 		============================================ -->
-    <link rel="shortcut icon" type="image/x-icon" href="/admin_panal/assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/HICMIS/admin_panal/assets/img/favicon.ico">
     <!-- Google Fonts
 		============================================ -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <!-- Bootstrap CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/bootstrap.min.css">
     <!-- Bootstrap CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/font-awesome.min.css">
     <!-- owl.carousel CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="/admin_panal/assets/css/owl.theme.css">
-    <link rel="stylesheet" href="/admin_panal/assets/css/owl.transitions.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/owl.theme.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/owl.transitions.css">
     <!-- animate CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/animate.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/animate.css">
     <!-- normalize CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/normalize.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/normalize.css">
     <!-- meanmenu icon CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/meanmenu.min.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/meanmenu.min.css">
     <!-- main CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/main.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/main.css">
     <!-- educate icon CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/educate-custon-icon.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/educate-custon-icon.css">
     <!-- morrisjs CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/morrisjs/morris.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/morrisjs/morris.css">
     <!-- mCustomScrollbar CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/scrollbar/jquery.mCustomScrollbar.min.css">
     <!-- modals CSS
 		============================================ -->
-        <link rel="stylesheet" href="/admin_panal/assets/css/modals.css">
+        <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/modals.css">
         <!-- datapicker CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/datapicker/datepicker3.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/datapicker/datepicker3.css">
     <!-- forms CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/form/all-type-forms.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/form/all-type-forms.css">
     <!-- metisMenu CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/metisMenu/metisMenu.min.css">
-    <link rel="stylesheet" href="/admin_panal/assets/css/metisMenu/metisMenu-vertical.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/metisMenu/metisMenu-vertical.css">
     <!-- calendar CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="/admin_panal/assets/css/calendar/fullcalendar.print.min.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/calendar/fullcalendar.print.min.css">
     <!-- style CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/alerts.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/alerts.css">
 <!-- notifications CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/notifications/Lobibox.min.css">
-    <link rel="stylesheet" href="/admin_panal/assets/css/notifications/notifications.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/notifications/Lobibox.min.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/notifications/notifications.css">
     <!-- style CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/style.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/style.css">
     <!-- responsive CSS
 		============================================ -->
-    <link rel="stylesheet" href="/admin_panal/assets/css/responsive.css">
+    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/responsive.css">
     <!-- modernizr JS
 		============================================ -->
-    <script src="/admin_panal/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="/HICMIS/admin_panal/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>

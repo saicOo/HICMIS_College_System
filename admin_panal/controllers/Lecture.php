@@ -64,7 +64,7 @@ class Lecture extends Connect{
         }else{
             $_SESSION['error'] = "File name not found";
         }
-    header('location:/admin_panal/padges/lecture/?ref='.$material_id);
+    header('location:/HICMIS/admin_panal/padges/lecture/?ref='.$material_id);
     exit;
         
         

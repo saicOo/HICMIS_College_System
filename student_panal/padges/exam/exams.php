@@ -28,7 +28,7 @@ require_once PAGE_PATH."/../layouts/header.php";
         </p>
         <div class="link-nav">
           <span class="box">
-            <a href="/student_panal/">Home </a>
+            <a href="/HICMIS/student_panal/">Home </a>
             <i class="lnr lnr-arrow-right"></i>
             <a href="#">exams </a>
           </span>
@@ -70,7 +70,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                 <h5><span>Finish Exam !!!!</span></h5>
                 <?php else: ?>
 
-                <h5><a href="/student_panal/padges/exam/?ref=<?php echo $item['exam_id'] ."&page=1"?>">Start Exam</a></h5>
+                <h5><a href="/HICMIS/student_panal/padges/exam/?ref=<?php echo $item['exam_id'] ."&page=1"?>">Start Exam</a></h5>
 
                 <?php endif ?>
 

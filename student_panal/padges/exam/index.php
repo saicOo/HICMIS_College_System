@@ -26,13 +26,13 @@ if(isset($_GET['ref'])){
     if(empty($question) || empty($examRow)){
         $_SESSION['break'] = "A breach has occurred in the system, 
     and the error has been sent to the administrator";
-      header('location:/student_panal/');
+      header('location:/HICMIS/student_panal/');
       exit;
     } 
 }else{
     $_SESSION['break'] = "A breach has occurred in the system, 
     and the error has been sent to the administrator";
-      header('location:/student_panal/');
+      header('location:/HICMIS/student_panal/');
       exit;
   }
 // **********************************************************//
@@ -143,7 +143,7 @@ require_once PAGE_PATH."/../layouts/header.php";
         </p>
         <div class="link-nav">
           <span class="box">
-            <a href="/student_panal/">Home </a>
+            <a href="/HICMIS/student_panal/">Home </a>
             <i class="lnr lnr-arrow-right"></i>
             <a href="#"><?php echo "Question" ." ". $page ?> </a>
           </span>
@@ -207,7 +207,7 @@ $(document).ready(function(){
     setInterval(() => {
    
         $.ajax({
-            url:"/student_panal/padges/exam/timerExam.php",
+            url:"/HICMIS/student_panal/padges/exam/timerExam.php",
             method:"post",
             data:{duration:endTime,exam:exam},
             

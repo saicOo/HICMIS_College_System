@@ -13,7 +13,7 @@ if(isset($_GET['ref'])){
     
     $level = new Level;
     $levelRow = $level->show($ref_id);
-    if(empty($levelRow)) header('location:/admin_panal/500/');
+    if(empty($levelRow)) header('location:/HICMIS/admin_panal/500/');
     $lev_name=$levelRow['name'];
     if(isset($_POST['submit'])){
         $request = array(
@@ -30,7 +30,7 @@ if(isset($_GET['destroy'])){
     $subject->destroy($sub_id,$dirName,$ref_id,$lev_name);
   }
 }else{
-    header('location:/admin_panal/500/');
+    header('location:/HICMIS/admin_panal/500/');
 }
 
 #########################################################
@@ -51,7 +51,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu" style="text-align: left;">
-                                            <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
+                                            <li><a href="/HICMIS/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
                                             <li><span class="bread-blod"><?php echo $lev_name ?></span>
                                             </li>
@@ -146,7 +146,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                         <td>1</td>
                                         <td><?php echo $item['name'] ?></td>
                                         <td><?php echo $lev_name ?></td>
-                                        <td><a href="/admin_panal/padges/material/?ref=<?php echo $item['id'] ?>"><i class="fa fa-info-circle edu-informatio" aria-hidden="true"></i> show</a></td>
+                                        <td><a href="/HICMIS/admin_panal/padges/material/?ref=<?php echo $item['id'] ?>"><i class="fa fa-info-circle edu-informatio" aria-hidden="true"></i> show</a></td>
                                         <td>
                                             <a  data-toggle="tooltip" title="delete"href="?ref=<?php echo $ref_id ."&destroy=".$item['id']."&dirName=".$item['name']?>" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                         </td>

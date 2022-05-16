@@ -9,7 +9,7 @@ $conn;
         $conn = new PDO ("mysql:host=".$host.";dbname=".$db."","$user",$pass);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        header('location:/student_panal/');
+        header('location:/HICMIS/student_panal/');
     }catch(PDOException $e){
       echo '<!DOCTYPE html>
       <html lang="en">

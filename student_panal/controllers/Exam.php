@@ -70,7 +70,7 @@ class Exam extends Connect{
         $result = $this->conn->query($sql);
         $countExam = $result->fetch(PDO::FETCH_ASSOC);
         $page = $countExam['c'] >= $page ? $page : 1;
-        header('location:/student_panal/padges/exam/index.php?ref='.$exam_id.'&page='.$page);
+        header('location:/HICMIS/student_panal/padges/exam/index.php?ref='.$exam_id.'&page='.$page);
         exit;
     }
 ###############################################################
@@ -85,7 +85,7 @@ class Exam extends Connect{
         $result = $this->conn->query($sql);
         $countExam = $result->fetch(PDO::FETCH_ASSOC);
         $page = $countExam['c'] >= $page ? $page : 1;
-        header('location:/student_panal/padges/exam/index.php?ref='.$exam_id.'&page='.$page);
+        header('location:/HICMIS/student_panal/padges/exam/index.php?ref='.$exam_id.'&page='.$page);
         exit;
     }
 
@@ -120,7 +120,7 @@ public function enrollExam($exam_id,$finish){
             if(date("Y-m-d h:i A", strtotime($row['exam_end_time'])) <= date("Y-m-d h:i A")|| $row['attendance_status'] === "completed" || $finish === true){
                 $insert = "UPDATE `enroll` SET attendance_status = 'completed' WHERE student_id = $student_id AND exam_id = $exam_id";
                    $this->conn->exec($insert);
-                echo '<script> location.href ="/student_panal/" </script>';
+                echo '<script> location.href ="/HICMIS/student_panal/" </script>';
                 exit;
             }
         }
@@ -134,7 +134,7 @@ public function checkTimer($exam_id){
                 if(!isset($_COOKIE['enroll'])){
                     $insert = "UPDATE `enroll` SET attendance_status = 'completed' WHERE student_id = $student_id AND exam_id = $exam_id";
                        $this->conn->exec($insert);
-                    echo '<script> location.href ="/student_panal/" </script>';
+                    echo '<script> location.href ="/HICMIS/student_panal/" </script>';
                     exit;
                 }
 }

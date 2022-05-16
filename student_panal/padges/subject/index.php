@@ -32,7 +32,7 @@ $lectures = new Lecture;
 if(empty($presence) || empty($disblaymaterial) || empty($subjectRow)){
   $_SESSION['break'] = "A breach has occurred in the system, 
 and the error has been sent to the administrator";
-header('location:/student_panal/');
+header('location:/HICMIS/student_panal/');
 exit;
 }
 }
@@ -40,13 +40,13 @@ catch(Exception $e) {
   $_SESSION['break'] = "A breach has occurred 
   in the system, and the error has been sent to 
   the administrator";
-  header('location:/student_panal/');
+  header('location:/HICMIS/student_panal/');
   exit;
 }
 }else{
   $_SESSION['break'] = "A breach has occurred in the system, 
   and the error has been sent to the administrator";
-    header('location:/student_panal/');
+    header('location:/HICMIS/student_panal/');
     exit;
 }
 
@@ -68,7 +68,7 @@ require_once PAGE_PATH."/../layouts/header.php";
         </p>
         <div class="link-nav">
           <span class="box">
-            <a href="/student_panal/">Home </a>
+            <a href="/HICMIS/student_panal/">Home </a>
             <i class="lnr lnr-arrow-right"></i>
             <a href="#"><?php echo $subjectRow['name'] ?> </a>
           </span>
@@ -101,7 +101,7 @@ require_once PAGE_PATH."/../layouts/header.php";
         $disblaylecture = $lectures->display($item['id']);
         foreach($disblaylecture as $lecture):
         ?>
-      <a class="mr-4" href="/student_panal/padges/display/?ref=<?php echo $lecture['lecture_id']?>"><?php echo $lecture['type']?></a>
+      <a class="mr-4" href="/HICMIS/student_panal/padges/display/?ref=<?php echo $lecture['lecture_id']?>"><?php echo $lecture['type']?></a>
       <?php endforeach ?>
     </td>
 

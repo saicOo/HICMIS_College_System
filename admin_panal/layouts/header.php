@@ -2,7 +2,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="index.html"><img class="main-logo" src="/admin_panal/assets/img/logo/logo.png" alt="" /></a>
+                        <a href="index.html"><img class="main-logo" src="/HICMIS/admin_panal/assets/img/logo/logo.png" alt="" /></a>
                     </div>
                 </div>
             </div>
@@ -31,12 +31,12 @@
                                             <ul class="nav navbar-nav mai-top-nav header-right-menu">
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-															<img src="/admin_panal/assets/img/profile/avatar.png" alt="" />
+															<img src="/HICMIS/admin_panal/assets/img/profile/avatar.png" alt="" />
 															<span class="admin-name"><?php echo $_SESSION['adminName'] ?></span>
 															<i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
 														</a>
                                                     <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                        <li><a href="/admin_panal/padges/auth/profile.php?ref=<?php echo $_SESSION['admin'] ?>"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
+                                                        <li><a href="/HICMIS/admin_panal/padges/auth/profile.php?ref=<?php echo $_SESSION['admin'] ?>"><span class="edu-icon edu-user-rounded author-log-ic"></span>My Profile</a>
                                                         </li>
                                                         <li><a href="?logout"><span class="edu-icon edu-locked author-log-ic"></span>Log Out</a>
                                                         </li>

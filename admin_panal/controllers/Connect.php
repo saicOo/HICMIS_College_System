@@ -10,7 +10,7 @@ class Connect{
             $this->conn = new PDO ("mysql:host=".$this->host.";dbname=".$this->db."","$this->user",$this->pass);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }catch(PDOException $e){
-            header('location:/admin_panal/500/');
+            header('location:/HICMIS/admin_panal/500/');
         }
     }
 }

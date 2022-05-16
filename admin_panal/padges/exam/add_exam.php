@@ -40,7 +40,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu" style="text-align: left;">
-                                            <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
+                                            <li><a href="/HICMIS/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
                                             <li><span class="bread-blod">Add Exam</span>
                                             </li>
@@ -165,7 +165,7 @@ require_once PAGE_PATH."/../layouts/header.php";
     console.log(level);
     $.ajax({
         method:'POST',
-        url:'/admin_panal/padges/exam/ajax.php',
+        url:'/HICMIS/admin_panal/padges/exam/ajax.php',
         dataType: "json",
         data: {lev: level},
         success: function(data,status){

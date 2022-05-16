@@ -9,7 +9,7 @@ if(isset($_GET['ref'])){
     $id = $_GET['ref'];
     $admin = new Admin; 
     $admin_single =  $admin->show($id);
-    if(empty($admin_single)) header('location:/admin_panal/500/');
+    if(empty($admin_single)) header('location:/HICMIS/admin_panal/500/');
     if(isset($_POST['update'])){
         $request = array(
             'name'=> $_POST['name'],
@@ -18,7 +18,7 @@ if(isset($_GET['ref'])){
         $admin->update($request,$id);
     } 
 }else{
-    header('location:/admin_panal/500/');
+    header('location:/HICMIS/admin_panal/500/');
 }
 
 
@@ -40,7 +40,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu" style="text-align: left;">
-                                            <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
+                                            <li><a href="/HICMIS/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
                                             <li><span class="bread-blod">profile admin</span>
                                             </li>
