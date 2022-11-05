@@ -4,6 +4,7 @@ define("PAGE_PATH",dirname(__DIR__));
 function __autoload($class){
     require PAGE_PATH."/../controllers/".$class.".php";
 }
+include PAGE_PATH."/../init.php";
 new Auth;
 $student = new Student; 
 $students =  $student->display();
@@ -42,7 +43,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu" style="text-align: left;">
-                                            <li><a href="/HICMIS/admin_panal/">Home</a> <span class="bread-slash">/</span>
+                                            <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
                                             <li><span class="bread-blod">all students</span>
                                             </li>
@@ -92,7 +93,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                         <td><?php echo $item['national'] ?></td>
                                         <td><?php echo $item['name'] ?></td>
                                         <td><?php echo $item['lev_name'] ?></td>
-                                        <td><a href="/HICMIS/admin_panal/padges/students/profile.php?ref=<?php echo $item['code_st'] ?>"><i class="fa fa-user edu-avatar" aria-hidden="true"></i> show</a></td>
+                                        <td><a href="/admin_panal/padges/students/profile.php?ref=<?php echo $item['code_st'] ?>"><i class="fa fa-user edu-avatar" aria-hidden="true"></i> show</a></td>
                                         <td>
                                             <form method="post">
 

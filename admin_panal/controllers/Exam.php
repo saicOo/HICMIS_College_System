@@ -86,7 +86,7 @@ public function questionCount($exam_id){
          return $result->fetch(PDO::FETCH_ASSOC);
         }
          catch(Exception $e) {
-            header('location:/HICMIS/admin_panal/500/');
+            header('location:/admin_panal/500/');
         }
     }
 
@@ -105,7 +105,7 @@ public function destroy($exam_id){
         $result = $this->conn->exec($sql);
         
         $_SESSION['success'] = "exam deleted successfully";
-        header('location:/HICMIS/admin_panal/padges/exam/');
+        header('location:/admin_panal/padges/exam/');
         exit;
     
 }

@@ -4,6 +4,7 @@ define("PAGE_PATH",dirname(__DIR__));
 function __autoload($class){
     require PAGE_PATH."/../controllers/".$class.".php";
 }
+include PAGE_PATH."/../init.php";
 new Auth;
 $Lev = new Level;
 $displayLev = $Lev->display();
@@ -44,7 +45,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu" style="text-align: left;">
-                                            <li><a href="/HICMIS/admin_panal/">Home</a> <span class="bread-slash">/</span>
+                                            <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
                                             <li><span class="bread-blod">add student</span>
                                             </li>

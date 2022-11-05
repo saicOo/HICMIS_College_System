@@ -2,7 +2,7 @@
 if(isset($_GET['logout'])){
     session_unset();
     session_destroy();
-    header('location:/HICMIS/student_panal/login/index.php');
+    header('location:/student_panal/login/index.php');
     exit;
   }
 ?>
@@ -13,7 +13,7 @@ if(isset($_GET['logout'])){
   <!-- Mobile Specific Meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <!-- Favicon -->
-  <link rel="shortcut icon" href="/HICMIS/student_panal/assets/img/fav.png" />
+  <link rel="shortcut icon" href="<?php echo $assets ?>img/fav.png" />
   <!-- Author Meta -->
   <meta name="author" content="colorlib" />
   <!-- Meta Description -->
@@ -23,22 +23,22 @@ if(isset($_GET['logout'])){
   <!-- meta character set -->
   <meta charset="UTF-8" />
   <!-- Site Title -->
-  <title>Eclipse Education</title>
+  <title>College System</title>
 
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Roboto:400,400i,500,700" rel="stylesheet" />
   <!--
       CSS
       =============================================
     -->
-    <link rel="stylesheet" href="/HICMIS/student_panal/assets/css/linearicons.css" />
-    <link rel="stylesheet" href="/HICMIS/student_panal/assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="/HICMIS/student_panal/assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="/HICMIS/student_panal/assets/css/magnific-popup.css" />
-    <link rel="stylesheet" href="/HICMIS/student_panal/assets/css/owl.carousel.css" />
-    <link rel="stylesheet" href="/HICMIS/student_panal/assets/css/nice-select.css">
-    <link rel="stylesheet" href="/HICMIS/student_panal/assets/css/hexagons.min.css" />
+    <link rel="stylesheet" href="<?php echo $assets ?>css/linearicons.css" />
+    <link rel="stylesheet" href="<?php echo $assets ?>css/font-awesome.min.css" />
+    <link rel="stylesheet" href="<?php echo $assets ?>css/bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo $assets ?>css/magnific-popup.css" />
+    <link rel="stylesheet" href="<?php echo $assets ?>css/owl.carousel.css" />
+    <link rel="stylesheet" href="<?php echo $assets ?>css/nice-select.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/hexagons.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css" />
-    <link rel="stylesheet" href="/HICMIS/student_panal/assets/css/main.css" />
+    <link rel="stylesheet" href="<?php echo $assets ?>css/main.css" />
 </head>
 
 <body>
@@ -46,9 +46,9 @@ if(isset($_GET['logout'])){
 	<header class="default-header">
 		<nav class="navbar navbar-expand-lg  navbar-light">
 			<div class="container">
-				<a class="navbar-brand" href="/HICMIS/student_panal/" style="font-size: 800;color: #fff; font-weight: bold;">
+				<a class="navbar-brand" href="/student_panal/" style="font-size: 800;color: #fff; font-weight: bold;">
        
-          <img class="image-brand" src="/HICMIS/student_panal/assets/img/graduation-cap (3).png" alt="Mountain View"> HICMIS 
+          <img class="image-brand" src="<?php echo $assets ?>img/graduation-cap (3).png" alt="Mountain View"> HICMIS 
         
 
 				</a>
@@ -69,8 +69,8 @@ if(isset($_GET['logout'])){
 							</a>
               
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="/HICMIS/student_panal/padges/student/profile.php">My profile</a>
-								<a class="dropdown-item" href="/HICMIS/student_panal/padges/student/result.php">View Result</a>
+								<a class="dropdown-item" href="/student_panal/padges/student/profile.php">My profile</a>
+								<a class="dropdown-item" href="/student_panal/padges/student/result.php">View Result</a>
 								<a class="dropdown-item" href="?logout">log out</a>
 							</div>
 						</li>

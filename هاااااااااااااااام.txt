@@ -1,1 +1,1 @@
-copy link : http://localhost/HICMIS/
+copy link : http://localhost/

@@ -73,7 +73,7 @@ class Student extends Connect{
                 VALUES ($code,'$national','$name','$phone','$birthday','$address','$gender','$lev_id')";
                 $result = $this->conn->exec($sql);
                 $_SESSION['success'] = "The student has been successfully registered";
-                header('location:/HICMIS/admin_panal/padges/students/');
+                header('location:/admin_panal/padges/students/');
                 exit;
             }else{
                 
@@ -124,7 +124,7 @@ class Student extends Connect{
          return $result->fetch(PDO::FETCH_ASSOC);
         }
          catch(Exception $e) {
-            header('location:/HICMIS/admin_panal/500/');
+            header('location:/admin_panal/500/');
         }
     }
 

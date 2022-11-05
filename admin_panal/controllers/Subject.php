@@ -68,7 +68,7 @@ class Subject extends Connect{
         $result = $this->conn->query($sql);
          return $result->fetch(PDO::FETCH_ASSOC);
         }catch(Exception $e) {
-            header('location:/HICMIS/admin_panal/500/');
+            header('location:/admin_panal/500/');
             exit;
         }
     }
@@ -87,7 +87,7 @@ class Subject extends Connect{
             $result = $this->conn->exec($sql);
             $_SESSION['success'] = "subject deleted successfully";
         }
-        header('location:/HICMIS/admin_panal/padges/subjects/?ref='.$lev_id);
+        header('location:/admin_panal/padges/subjects/?ref='.$lev_id);
         exit;
         
     }

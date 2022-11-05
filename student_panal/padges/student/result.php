@@ -4,6 +4,7 @@ define("PAGE_PATH",dirname(__DIR__));
 function __autoload($class){
     require PAGE_PATH."/../controllers/".$class.".php";
 }
+include PAGE_PATH."/../init.php";
 new Auth;
     $student = new Student; 
     $result =  $student->result($_SESSION['code_std']);
@@ -30,7 +31,7 @@ new Auth;
         </p>
         <div class="link-nav">
           <span class="box">
-            <a href="/HICMIS/student_panal/">Home </a>
+            <a href="/student_panal/">Home </a>
             <i class="lnr lnr-arrow-right"></i>
             <a href="#">Result Exams </a>
           </span>

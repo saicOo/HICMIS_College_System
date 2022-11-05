@@ -4,6 +4,7 @@ define("PAGE_PATH",dirname(__DIR__));
 function __autoload($class){
     require PAGE_PATH."/../controllers/".$class.".php";
 }
+include PAGE_PATH."/../init.php";
 date_default_timezone_set('Canada/Pacific');
 
 if(isset($_POST['duration'])){

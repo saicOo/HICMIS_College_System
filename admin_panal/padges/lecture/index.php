@@ -4,6 +4,7 @@ define("PAGE_PATH",dirname(__DIR__));
 function __autoload($class){
     require PAGE_PATH."/../controllers/".$class.".php";
 }
+include PAGE_PATH."/../init.php";
 new Auth;
 // ******** get method material id  ********//
 if(isset($_GET['ref'])){
@@ -15,7 +16,7 @@ if(isset($_GET['ref'])){
 // *********** get data  Material and Subject index of Lecture ***************//
     $material = new Material;
     $materialRow = $material->show($material_id);
-    if(empty($materialRow)) header('location:/HICMIS/admin_panal/500/');
+    if(empty($materialRow)) header('location:/admin_panal/500/');
     $sub_name = $materialRow['name'];
     $material_name = $materialRow['description'];
     $sub_id = $materialRow['sub_id'];
@@ -47,10 +48,10 @@ if(isset($_GET['destroy'])){
 }
 }
 catch(Exception $e) {
-    header('location:/HICMIS/admin_panal/500/');
+    header('location:/admin_panal/500/');
 }
 }else{
-    header('location:/HICMIS/admin_panal/500/');
+    header('location:/admin_panal/500/');
 }
 #########################################################
 // <!-- Start head area -->
@@ -69,11 +70,11 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu" style="text-align: left;">
-                                            <li><a href="/HICMIS/admin_panal/">Home</a> <span class="bread-slash">/</span>
+                                            <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
-                                            <li><a href="/HICMIS/admin_panal/padges/subjects/?ref=<?php echo $lev_id ?>"><?php echo $lev_name ?></a> <span class="bread-slash">/</span>
+                                            <li><a href="/admin_panal/padges/subjects/?ref=<?php echo $lev_id ?>"><?php echo $lev_name ?></a> <span class="bread-slash">/</span>
                                             </li>
-                                            <li><a href="/HICMIS/admin_panal/padges/material/?ref=<?php echo $sub_id ?>"><?php echo $sub_name ?></a> <span class="bread-slash">/</span>
+                                            <li><a href="/admin_panal/padges/material/?ref=<?php echo $sub_id ?>"><?php echo $sub_name ?></a> <span class="bread-slash">/</span>
                                             </li>
                                             <li><span class="bread-blod"><?php echo $material_name ?></span>
                                             </li>

@@ -4,6 +4,7 @@ define("PAGE_PATH",dirname(__DIR__));
 function __autoload($class){
     require PAGE_PATH."/../controllers/".$class.".php";
 }
+include PAGE_PATH."/../init.php";
 new Auth;
 if(isset($_GET['ref'])){
     $code_std = $_GET['ref'];
@@ -11,7 +12,7 @@ if(isset($_GET['ref'])){
     $std_single =  $student->show($code_std);
     $presences = new Presence; 
     $presence =  $presences->display($code_std);
-    if(empty($std_single)) header('location:/HICMIS/admin_panal/500/');
+    if(empty($std_single)) header('location:/admin_panal/500/');
     if(isset($_POST['update'])){
         $request = array(
             'name'=> $_POST['name'],
@@ -21,7 +22,7 @@ if(isset($_GET['ref'])){
         $student->update($request,$code_std);
     } 
 }else{
-    header('location:/HICMIS/admin_panal/500/');
+    header('location:/admin_panal/500/');
 }
 
 
@@ -43,7 +44,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu" style="text-align: left;">
-                                            <li><a href="/HICMIS/admin_panal/">Home</a> <span class="bread-slash">/</span>
+                                            <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
                                             <li><span class="bread-blod">profile student</span>
                                             </li>

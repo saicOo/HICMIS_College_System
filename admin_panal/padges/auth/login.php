@@ -1,3 +1,27 @@
+<?php
+
+session_start(); 
+define("PAGE_PATH",dirname(__DIR__));
+function __autoload($class){
+    require PAGE_PATH."/../controllers/".$class.".php";
+}
+include PAGE_PATH."/../init.php";
+   Auth::checkAuth();
+ 
+$admin = new Admin;
+// If Login, Login a new admin
+if(isset($_POST['login'])){
+    $request = array(
+        'email'=> $_POST['email'],
+        'password'=> $_POST['password'],
+    );
+    
+    $admin->login($request);
+}
+
+include PAGE_PATH."/../init.php";
+
+?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -15,74 +39,55 @@
     <link href="https://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
     <!-- Bootstrap CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/bootstrap.min.css">
     <!-- Bootstrap CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/font-awesome.min.css">
     <!-- owl.carousel CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/owl.carousel.css">
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/owl.theme.css">
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/owl.transitions.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/owl.carousel.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/owl.theme.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/owl.transitions.css">
     <!-- animate CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/animate.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/animate.css">
     <!-- normalize CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/normalize.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/normalize.css">
     <!-- main CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/main.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/main.css">
     <!-- morrisjs CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/morrisjs/morris.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/morrisjs/morris.css">
     <!-- mCustomScrollbar CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/scrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/scrollbar/jquery.mCustomScrollbar.min.css">
     <!-- metisMenu CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/metisMenu/metisMenu.min.css">
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/metisMenu/metisMenu-vertical.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/metisMenu/metisMenu.min.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/metisMenu/metisMenu-vertical.css">
     <!-- calendar CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/calendar/fullcalendar.print.min.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/calendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/calendar/fullcalendar.print.min.css">
     <!-- forms CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/form/all-type-forms.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/form/all-type-forms.css">
     <!-- style CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/alerts.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/alerts.css">
     <!-- style CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/style.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>style.css">
     <!-- responsive CSS
 		============================================ -->
-    <link rel="stylesheet" href="/HICMIS/admin_panal/assets/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo $assets ?>css/responsive.css">
     <!-- modernizr JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="<?php echo $assets ?>js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<?php
 
-session_start(); 
-define("PAGE_PATH",dirname(__DIR__));
-function __autoload($class){
-    require PAGE_PATH."/../controllers/".$class.".php";
-}
-   Auth::checkAuth();
- 
-$admin = new Admin;
-// If Login, Login a new admin
-if(isset($_POST['login'])){
-    $request = array(
-        'email'=> $_POST['email'],
-        'password'=> $_POST['password'],
-    );
-    
-    $admin->login($request);
-}
-?>
 <body>
     <!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -138,49 +143,49 @@ if(isset($_POST['login'])){
     </div>
     <!-- jquery
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="<?php echo $assets ?>js/vendor/jquery-1.12.4.min.js"></script>
     <!-- bootstrap JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo $assets ?>js/bootstrap.min.js"></script>
     <!-- wow JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/wow.min.js"></script>
+    <script src="<?php echo $assets ?>js/wow.min.js"></script>
     <!-- price-slider JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/jquery-price-slider.js"></script>
+    <script src="<?php echo $assets ?>js/jquery-price-slider.js"></script>
     <!-- meanmenu JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/jquery.meanmenu.js"></script>
+    <script src="<?php echo $assets ?>js/jquery.meanmenu.js"></script>
     <!-- owl.carousel JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/owl.carousel.min.js"></script>
+    <script src="<?php echo $assets ?>js/owl.carousel.min.js"></script>
     <!-- sticky JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/jquery.sticky.js"></script>
+    <script src="<?php echo $assets ?>js/jquery.sticky.js"></script>
     <!-- scrollUp JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/jquery.scrollUp.min.js"></script>
+    <script src="<?php echo $assets ?>js/jquery.scrollUp.min.js"></script>
     <!-- mCustomScrollbar JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="/HICMIS/admin_panal/assets/js/scrollbar/mCustomScrollbar-active.js"></script>
+    <script src="<?php echo $assets ?>js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="<?php echo $assets ?>js/scrollbar/mCustomScrollbar-active.js"></script>
     <!-- metisMenu JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/metisMenu/metisMenu.min.js"></script>
-    <script src="/HICMIS/admin_panal/assets/js/metisMenu/metisMenu-active.js"></script>
+    <script src="<?php echo $assets ?>js/metisMenu/metisMenu.min.js"></script>
+    <script src="<?php echo $assets ?>js/metisMenu/metisMenu-active.js"></script>
     <!-- tab JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/tab.js"></script>
+    <script src="<?php echo $assets ?>js/tab.js"></script>
     <!-- icheck JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/icheck/icheck.min.js"></script>
-    <script src="/HICMIS/admin_panal/assets/js/icheck/icheck-active.js"></script>
+    <script src="<?php echo $assets ?>js/icheck/icheck.min.js"></script>
+    <script src="<?php echo $assets ?>js/icheck/icheck-active.js"></script>
     <!-- plugins JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/plugins.js"></script>
+    <script src="<?php echo $assets ?>js/plugins.js"></script>
     <!-- main JS
 		============================================ -->
-    <script src="/HICMIS/admin_panal/assets/js/main.js"></script>
+    <script src="<?php echo $assets ?>js/main.js"></script>
 </body>
 
 </html>

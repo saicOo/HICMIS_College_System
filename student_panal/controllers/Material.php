@@ -13,7 +13,7 @@ class Material extends Connect{
         $result = $this->conn->query($sql);
         return $result;
     }catch(Exception $e) {
-        header('location:/HICMIS/admin_panal/500/');
+        header('location:/admin_panal/500/');
         exit;
     }
     }
@@ -29,7 +29,7 @@ public function show($material_id){
      return $result->fetch(PDO::FETCH_ASSOC);
     }
     catch(Exception $e) {
-       header('location:/HICMIS/admin_panal/500/');
+       header('location:/admin_panal/500/');
    }
 }
 

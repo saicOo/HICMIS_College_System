@@ -4,6 +4,7 @@ define("PAGE_PATH",dirname(__DIR__));
 function __autoload($class){
     require PAGE_PATH."/../controllers/".$class.".php";
 }
+include PAGE_PATH."/../init.php";
 new Auth;
 // ******** get method material id  ********//
 if(isset($_GET['ref'])){
@@ -19,7 +20,7 @@ if(isset($_GET['ref'])){
     if(empty($mateRow) || empty($lectRow)){
         $_SESSION['break'] = "A breach has occurred in the system, 
     and the error has been sent to the administrator";
-      header('location:/HICMIS/student_panal/');
+      header('location:/student_panal/');
       exit;
     } 
     
@@ -33,13 +34,13 @@ catch(Exception $e) {
     $_SESSION['break'] = "A breach has occurred 
     in the system, and the error has been sent to 
     the administrator";
-    header('location:/HICMIS/student_panal/');
+    header('location:/student_panal/');
     exit;
   }
   }else{
     $_SESSION['break'] = "A breach has occurred in the system, 
     and the error has been sent to the administrator";
-      header('location:/HICMIS/student_panal/');
+      header('location:/student_panal/');
       exit;
   }
 #########################################################
@@ -60,9 +61,9 @@ require_once PAGE_PATH."/../layouts/header.php";
         </p>
         <div class="link-nav">
           <span class="box">
-            <a href="/HICMIS/student_panal/">Home </a>
+            <a href="/student_panal/">Home </a>
             <i class="lnr lnr-arrow-right"></i>
-            <a href="/HICMIS/student_panal/padges/subject/?ref=<?php echo  $mateRow['sub_id'] ?>"><?php echo $mateRow['name'] ?> </a>
+            <a href="/student_panal/padges/subject/?ref=<?php echo  $mateRow['sub_id'] ?>"><?php echo $mateRow['name'] ?> </a>
             <i class="lnr lnr-arrow-right"></i>
             <a href="#"><?php echo $mateRow['description'] ?> </a>
             <i class="lnr lnr-arrow-right"></i>

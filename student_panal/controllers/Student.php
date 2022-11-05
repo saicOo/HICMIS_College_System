@@ -28,7 +28,7 @@ class Student extends Connect{
                     $_SESSION['code_std'] = $row['code_st'];
                     $_SESSION['name'] = $row['name'];
                     $_SESSION['lev_id'] = $row['lev_id'];
-                    header('location:/HICMIS/student_panal/');
+                    header('location:/student_panal/');
                 }
                
             }else{

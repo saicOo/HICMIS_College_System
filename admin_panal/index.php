@@ -1,9 +1,10 @@
 <?php
 session_start();
-
+define("PAGE_PATH",dirname(__DIR__));
 function __autoload($class){
     require "controllers/".$class.".php";
 }
+include "init.php";
 new Auth;
 $home = new Home;
     $stdsCount = $home->stdsCount();
@@ -18,6 +19,7 @@ require_once "./layouts/sidebar.php";
 require_once "./layouts/header.php"; 
         // <!-- end header area -->
 ##########################################
+
 ?>
 <div class="breadcome-area">
                 <div class="container-fluid">

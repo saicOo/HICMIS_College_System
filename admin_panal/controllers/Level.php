@@ -17,7 +17,7 @@ class Level extends Connect{
          return $result->fetch(PDO::FETCH_ASSOC);
         }
         catch(Exception $e) {
-           header('location:/HICMIS/admin_panal/500/');
+           header('location:/admin_panal/500/');
            exit;
        }
     }
