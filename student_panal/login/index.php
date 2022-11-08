@@ -35,7 +35,7 @@ if(isset($_POST['login'])){
   <!-- meta character set -->
   <meta charset="UTF-8" />
   <!-- Site Title -->
-  <title>Eclipse Education</title>
+  <title>College System | Login</title>
 
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Roboto:400,400i,500,700" rel="stylesheet" />
   <!--

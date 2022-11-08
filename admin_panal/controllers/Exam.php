@@ -9,7 +9,7 @@ class Exam extends Connect{
     public function checkDateEaxam(){
         $sql = "SELECT exam_id,exam_datetime FROM `exams`";
         $exams = $this->conn->query($sql);  
-        date_default_timezone_set('Canada/Pacific');
+        date_default_timezone_set('America/Los_Angeles');
         foreach ($exams as $item) {
             $exam_id = $item['exam_id'];
             if (date("Y-m-d h:i A", strtotime($item['exam_datetime'])) <= date("Y-m-d h:i A")) {
@@ -43,7 +43,8 @@ public function questionCount($exam_id){
 ########################     store exam             ########
     public function store($request){
         $title=  $request['title'];
-        $exam_datetime=  date('Y-m-d H:i',strtotime($request['exam_datetime']));
+        date_default_timezone_set('America/Los_Angeles');
+        $exam_datetime=  date('Y-m-d h:i',strtotime($request['exam_datetime']));
         $duration=  $request['duration'];
         $total_question=  $request['total_question'];
         $lev_id= $request['lev_id'];

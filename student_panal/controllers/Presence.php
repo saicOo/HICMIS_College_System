@@ -16,7 +16,7 @@ if(!$row){
     $sql = "INSERT INTO `presences`(`pres_id`, `std_id`, `sub_id`, `presence_count`) VALUES (null,'$code_std','$sub_id',1)";
         $this->conn->exec($sql);
 }else{
-    date_default_timezone_set('Canada/Pacific');
+    date_default_timezone_set('America/Los_Angeles');
                                                            
     if(date("Y-m-d", strtotime($row['pres_date'])) !== date("Y-m-d") ){
     $presence = $row['presence_count'] + 1;

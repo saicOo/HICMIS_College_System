@@ -13,6 +13,7 @@ if(isset($_GET['ref'])){
 // ******** If I click to finish the exam, it will return a value true ******** //
     $finish = isset($_POST['finish']) ? true : false;
     $exam->enrollExam($exam_id,$finish);
+     
  // **********************************************************//
 // ******** Make sure to return to the start page ******** //
     $page = isset($_GET['page'])?$_GET['page']:1;
@@ -146,6 +147,8 @@ require_once PAGE_PATH."/../layouts/header.php";
           <span class="box">
             <a href="/student_panal/">Home </a>
             <i class="lnr lnr-arrow-right"></i>
+            <a href="/student_panal/padges/exam/exams.php">Exams </a>
+            <i class="lnr lnr-arrow-right"></i>
             <a href="#"><?php echo "Question" ." ". $page ?> </a>
           </span>
         </div>
@@ -200,24 +203,23 @@ require_once PAGE_PATH."/../layouts/header.php";
         <!-- start footer area -->
         <?php  require_once PAGE_PATH."/../layouts/footer.php"; ?>
         <!-- end footer area -->
-        <script type="text/javascript">
+    <script type="text/javascript">
     
-$(document).ready(function(){
-    var endTime ="<?php echo $examRow['exam_duration'] ?>";
-    var exam =<?php echo $examRow['exam_id'] ?>;
-    setInterval(() => {
-   
-        $.ajax({
-            url:"/student_panal/padges/exam/timerExam.php",
-            method:"post",
-            data:{duration:endTime,exam:exam},
-            
-            success:function(data){
-                $("#timer").html(data);
-            }
-        });
-    
-    }, 1);
-  });
-
-</script>
+        var endTime ="<?php echo $exam->examDuration($exam_id); ?>";
+        console.log(endTime);
+        var deadline = new Date(endTime).getTime();
+        var x = setInterval(function() {
+        var now = new Date().getTime();
+        var t = deadline - now;
+        // var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60));
+        var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((t % (1000 * 60)) / 1000);
+        document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+        if (t < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "EXPIRED";
+            location.href ="/student_panal/";
+        }
+        }, 1000);
+    </script>

@@ -91,7 +91,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
-                                                                    <input name="question_title" id="question_title" type="text" class="form-control" placeholder="question_title" value="<?php if(isset($_POST['question_title']))echo $_POST['question_title'] ?>">
+                                                                    <input name="question_title" id="question_title" type="text" class="form-control" placeholder="question_title" autofocus value="<?php if(isset($_POST['question_title']))echo $_POST['question_title'] ?>">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <select name="exam_id" class="form-control">

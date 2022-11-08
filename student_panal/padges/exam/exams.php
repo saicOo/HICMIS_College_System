@@ -10,7 +10,7 @@ $exam = new Exam;
 
 $exams= $exam->displayExam();
 
-date_default_timezone_set('Canada/Pacific');
+date_default_timezone_set('America/Los_Angeles');
 #########################################################
         // <!-- start header area -->
 require_once PAGE_PATH."/../layouts/header.php"; 

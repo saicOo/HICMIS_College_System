@@ -91,10 +91,10 @@ require_once PAGE_PATH."/../layouts/header.php";
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
-                                                                    <input name="title" id="title" type="text" class="form-control" placeholder="title" value="<?php if(isset($_POST['title']))echo $_POST['title'] ?>">
+                                                                    <input name="title" id="title" type="text" class="form-control" placeholder="title" autofocus value="<?php if(isset($_POST['title']))echo $_POST['title'] ?>">
                                                                 </div>
                                                                 <div class="form-group " >
-                                                                    <label>exam datetime</label>
+                                                                    <label>Date Expire Exam</label>
                                                                     <div >
                                                                         <input name="exam_datetime" type="datetime-local" class="form-control">
                                                                     </div>

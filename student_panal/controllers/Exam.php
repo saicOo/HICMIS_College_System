@@ -108,16 +108,17 @@ public function enrollExam($exam_id,$finish){
    WHERE enroll.student_id = $student_id AND enroll.exam_id = $exam_id";
    $result  = $this->conn->query($check);
    $row = $result->fetch(PDO::FETCH_ASSOC);
-    date_default_timezone_set('Canada/Pacific');
+    date_default_timezone_set('America/Los_Angeles');
    if(!$row){
-    $exam_duration = $this->showExam($exam_id)['exam_duration'];
-    $exam_duration = date("Y-m-d h:i A", strtotime($exam_duration));
+       $exam_duration_count = $this->showExam($exam_id)['exam_duration'];
+       $exam_duration = date("Y-m-d H:i", strtotime($exam_duration_count));
+    //    exit($exam_duration);
        $insert = "INSERT INTO `enroll`(`enroll_id`, `student_id`, `exam_id`, `attendance_status`,`exam_end_time`) 
        VALUES (null,$student_id,$exam_id,'attend','$exam_duration')";
            $this->conn->exec($insert);
            
         }else{
-            if(date("Y-m-d h:i A", strtotime($row['exam_end_time'])) <= date("Y-m-d h:i A")|| $row['attendance_status'] === "completed" || $finish === true){
+            if(date("Y-m-d H:i", strtotime($row['exam_end_time'])) <= date("Y-m-d H:i")|| $row['attendance_status'] === "completed" || $finish === true){
                 $insert = "UPDATE `enroll` SET attendance_status = 'completed' WHERE student_id = $student_id AND exam_id = $exam_id";
                    $this->conn->exec($insert);
                 echo '<script> location.href ="/student_panal/" </script>';
@@ -127,29 +128,27 @@ public function enrollExam($exam_id,$finish){
     
 }
 ###############################################################
-########################     check timer ajax      ########
-public function checkTimer($exam_id){
-    $student_id = $_SESSION['code_std'];
-               // if($_SESSION['unroll'] <= date("Y-m-d h:i A")|| $row['attendance_status'] === "completed"){
-                if(!isset($_COOKIE['enroll'])){
-                    $insert = "UPDATE `enroll` SET attendance_status = 'completed' WHERE student_id = $student_id AND exam_id = $exam_id";
-                       $this->conn->exec($insert);
-                    echo '<script> location.href ="/student_panal/" </script>';
-                    exit;
-                }
-}
-###############################################################
-########################     show timer ajax      ########
+########################     get status exam student   ########
 public function checkEnroll($exam_id){
     $student_id = $_SESSION['code_std'];
                     $sql = "SELECT attendance_status
                     FROM `enroll` 
                     WHERE student_id = $student_id AND exam_id = $exam_id";
-                   $result = $this->conn->query($sql);
-                   return $result->fetch(PDO::FETCH_ASSOC)['attendance_status'];
-                       
-                   
-                
+                   $result = $this->conn->query($sql)->fetch(PDO::FETCH_ASSOC);
+                   if($result){
+                       return $result['attendance_status'];
+                   }
+}
+###############################################################
+########################     show timer ajax      ########
+public function examDuration($exam_id){
+    $student_id = $_SESSION['code_std'];
+    $check = "SELECT exams.exam_duration,enroll.attendance_status,enroll.exam_end_time
+    FROM `enroll` JOIN `exams` ON exams.exam_id = enroll.exam_id 
+    WHERE enroll.student_id = $student_id AND enroll.exam_id = $exam_id";
+    $result  = $this->conn->query($check);
+    $row = $result->fetch(PDO::FETCH_ASSOC);
+    return $row['exam_end_time'];
 }
 
 }
