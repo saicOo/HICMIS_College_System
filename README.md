@@ -1,3 +1,3 @@
 # HICMIS_System
-#geting started
--rename filder HICMIS
+# geting started
+- rename filder HICMIS
