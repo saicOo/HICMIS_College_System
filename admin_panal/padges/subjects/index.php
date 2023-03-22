@@ -129,7 +129,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap drp-lst">
-                            <h4>Departments List</h4>
+                            <h4>Subjects List</h4>
                             <div class="add-product">
                                
                             </div>
@@ -137,9 +137,9 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <table>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name of description.</th>
+                                        <th>Name</th>
                                         <th>Level</th>
-                                        <th>show matiral</th>
+                                        <th>Show matiral</th>
                                         <th>Action</th>
                                     </tr>
                                     <?php foreach($disblaySub as $item): ?>

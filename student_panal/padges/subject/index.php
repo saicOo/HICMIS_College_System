@@ -87,9 +87,9 @@ require_once PAGE_PATH."/../layouts/header.php";
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">الموضوع</th>
-      <th scope="col">تاريخ المحاضرة</th>
-      <th scope="col">المحتوي</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Date</th>
+      <th scope="col">Content</th>
     </tr>
   </thead>
   <tbody>

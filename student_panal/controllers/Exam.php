@@ -108,7 +108,7 @@ public function enrollExam($exam_id,$finish){
    WHERE enroll.student_id = $student_id AND enroll.exam_id = $exam_id";
    $result  = $this->conn->query($check);
    $row = $result->fetch(PDO::FETCH_ASSOC);
-    date_default_timezone_set('America/Los_Angeles');
+   date_default_timezone_set('Africa/Cairo');
    if(!$row){
        $exam_duration_count = $this->showExam($exam_id)['exam_duration'];
        $exam_duration = date("Y-m-d H:i", strtotime($exam_duration_count));
