@@ -43,55 +43,24 @@ include PAGE_PATH."/../init.php";
     <!-- Bootstrap CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo $assets ?>css/font-awesome.min.css">
-    <!-- owl.carousel CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo $assets ?>css/owl.carousel.css">
-    <link rel="stylesheet" href="<?php echo $assets ?>css/owl.theme.css">
-    <link rel="stylesheet" href="<?php echo $assets ?>css/owl.transitions.css">
     <!-- animate CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo $assets ?>css/animate.css">
     <!-- normalize CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo $assets ?>css/normalize.css">
-    <!-- main CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo $assets ?>css/main.css">
-    <!-- morrisjs CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo $assets ?>css/morrisjs/morris.css">
-    <!-- mCustomScrollbar CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo $assets ?>css/scrollbar/jquery.mCustomScrollbar.min.css">
-    <!-- metisMenu CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo $assets ?>css/metisMenu/metisMenu.min.css">
-    <link rel="stylesheet" href="<?php echo $assets ?>css/metisMenu/metisMenu-vertical.css">
-    <!-- calendar CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo $assets ?>css/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="<?php echo $assets ?>css/calendar/fullcalendar.print.min.css">
     <!-- forms CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo $assets ?>css/form/all-type-forms.css">
-    <!-- style CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo $assets ?>css/alerts.css">
     <!-- style CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo $assets ?>style.css">
     <!-- responsive CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo $assets ?>css/responsive.css">
-    <!-- modernizr JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-	<![endif]-->
 	<div class="error-pagewrap">
 		<div class="error-page-int">
 			<div class="text-center m-b-md custom-login">
@@ -132,6 +101,18 @@ include PAGE_PATH."/../init.php";
        
         <?php endif ?>
         <!-- start aleart area -->
+        <table class="table table-bordered">
+          <thead>
+            <th>Email</th>
+            <th>Passowrd</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>admin@app.com</td>
+              <td>123456789</td>
+            </tr>
+          </tbody>
+        </table>
                             <button name="login" class="btn btn-success btn-block loginbtn">Login</button>
                         </form>
                     </div>
@@ -147,45 +128,6 @@ include PAGE_PATH."/../init.php";
     <!-- bootstrap JS
 		============================================ -->
     <script src="<?php echo $assets ?>js/bootstrap.min.js"></script>
-    <!-- wow JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/wow.min.js"></script>
-    <!-- price-slider JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/jquery-price-slider.js"></script>
-    <!-- meanmenu JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/jquery.meanmenu.js"></script>
-    <!-- owl.carousel JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/owl.carousel.min.js"></script>
-    <!-- sticky JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/jquery.sticky.js"></script>
-    <!-- scrollUp JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/jquery.scrollUp.min.js"></script>
-    <!-- mCustomScrollbar JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="<?php echo $assets ?>js/scrollbar/mCustomScrollbar-active.js"></script>
-    <!-- metisMenu JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/metisMenu/metisMenu.min.js"></script>
-    <script src="<?php echo $assets ?>js/metisMenu/metisMenu-active.js"></script>
-    <!-- tab JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/tab.js"></script>
-    <!-- icheck JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/icheck/icheck.min.js"></script>
-    <script src="<?php echo $assets ?>js/icheck/icheck-active.js"></script>
-    <!-- plugins JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/plugins.js"></script>
-    <!-- main JS
-		============================================ -->
-    <script src="<?php echo $assets ?>js/main.js"></script>
 </body>
 
 </html>

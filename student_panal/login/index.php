@@ -90,6 +90,22 @@ if(isset($_POST['login'])){
                    <?php echo $student->messErrors['worng'] ?>
                   </div>
                   <?php endif ?>
+                  <table class="table table-bordered">
+          <thead>
+            <th>Code</th>
+            <th>National</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1234</td>
+              <td>12345649782123</td>
+            </tr>
+            <tr>
+              <td>4321</td>
+              <td>46655544897531</td>
+            </tr>
+          </tbody>
+        </table>
               <div class="col-lg-12 text-center">
                 <button name="login" class="btn text-uppercase">Sing in</button>
               </div>

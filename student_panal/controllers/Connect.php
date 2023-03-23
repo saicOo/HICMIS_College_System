@@ -1,7 +1,7 @@
 <?php
 class Connect{
     private $host = "localhost";
-    private $db ="hicmis_system";
+    private $db ="hicmis_college_system";
     private $user ="root";
     private $pass ="";
     public $conn;
