@@ -6,7 +6,7 @@ $displayLevels = $Levels->display();
 <div class="left-sidebar-pro">
         <nav id="sidebar" class="">
             <div class="sidebar-header">
-                <a href="index.html"><img class="main-logo" src="<?php echo $assets ?>img/logo/logo.png" alt="" /></a>
+                <a href="index.html"><h1 style="padding-top: 10px;">HICMIS</h1></a>
                 <strong><a href="index.html"><img src="<?php echo $assets ?>img/logo/logosn.png" alt="" /></a></strong>
             </div>
             <div class="left-custom-menu-adp-wrap comment-scrollbar">
@@ -40,10 +40,10 @@ $displayLevels = $Levels->display();
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Settings</span></a>
+                            <a class="has-arrow" href="#" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Admins</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="All Professors" href="/admin_panal/padges/auth/admins.php"><span class="mini-sub-pro">Display Admins</span></a></li>
-                                <li><a title="Add Professor" href="/admin_panal/padges/auth/register.php"><span class="mini-sub-pro">Register Admins</span></a></li>
+                                <li><a title="Add Professor" href="/admin_panal/padges/auth/register.php"><span class="mini-sub-pro">Register Admin</span></a></li>
                             </ul>
                         </li>
                     </ul>

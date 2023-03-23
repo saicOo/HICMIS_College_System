@@ -140,7 +140,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                         <th>Name of description.</th>
                                         <th>Level</th>
                                         <th>show matiral</th>
-                                        <th>Setting</th>
+                                        <th>Action</th>
                                     </tr>
                                     <?php foreach($disblaySub as $item): ?>
                                     <tr>

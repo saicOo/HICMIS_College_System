@@ -153,7 +153,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="payment-adress">
-                                                                    <button type="submit" name="update" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                                    <button type="submit" name="update" class="btn btn-primary waves-effect waves-light">Edit</button>
                                                                 </div>
                                                             </div>
                                                         </div>

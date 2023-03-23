@@ -3,7 +3,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="footer-copy-right">
-                            <p>Copyright © 2018. All rights reserved. Template by <a href="https://colorlib.com/wp/templates/">Colorlib</a></p>
+                            <p>Copyright © 2018. All rights reserved. <a href="https://saicopy.com">Saico</a></p>
                         </div>
                     </div>
                 </div>
@@ -52,20 +52,10 @@
 		============================================ -->
         <script src="<?php echo $assets ?>js/datapicker/bootstrap-datepicker.js"></script>
     <script src="<?php echo $assets ?>js/datapicker/datepicker-active.js"></script>
-<!-- morrisjs JS
-    ============================================ -->
-<!-- <script src="<?php echo $assets ?>js/sparkline/jquery.sparkline.min.js"></script> -->
-<!-- <script src="<?php echo $assets ?>js/sparkline/jquery.charts-sparkline.js"></script> -->
-<!-- <script src="<?php echo $assets ?>js/sparkline/sparkline-active.js"></script> -->
-<!-- notification JS
+    <!-- notification JS
 ============================================ -->
 <script src="<?php echo $assets ?>js/notifications/Lobibox.js"></script>
 <script src="<?php echo $assets ?>js/notifications/notification-active.js"></script>
-<!-- calendar JS
-    ============================================ -->
-<!-- <script src="<?php echo $assets ?>js/calendar/moment.min.js"></script> -->
-<!-- <script src="<?php echo $assets ?>js/calendar/fullcalendar.min.js"></script> -->
-<!-- <script src="<?php echo $assets ?>js/calendar/fullcalendar-active.js"></script> -->
 <!-- plugins JS
     ============================================ -->
 <script src="<?php echo $assets ?>js/plugins.js"></script>
@@ -93,10 +83,7 @@ if(isset($_SESSION['success'])): ?>
             unset($_SESSION['error']); ?>
 <?php endif ?>
 </script>
-<!-- <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script> -->
+
        
 </body>
 

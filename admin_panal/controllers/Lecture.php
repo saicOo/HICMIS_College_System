@@ -24,6 +24,7 @@ class Lecture extends Connect{
         $lecture_type = $request['lecture_type'];
         $lecture_name = $request['lecture_name'];
         $lecture_tmp = $request['lecture_tmp'];
+        $lecture_size = $request['lecture_size'];
         $location = '../../../upload/'.'/'.$lev_name.'/'.$sub_name.'/'.$material_name.'/';
     /********************************************
         *** check inputs empty
@@ -37,6 +38,10 @@ class Lecture extends Connect{
         *** check validation inputs
         */
         if ($lecture_type != "video/mp4")$this->messErrors[] = "The lecture type not mp4";
+        /********************************************
+        *** check validation size video
+        */
+        if ($lecture_size > 4000000)$this->messErrors[] = "You have exceeded the maximum size of 4MB";
 
         if (file_exists($location . $lecture_name))$this->messErrors[] = "This lecture already exists";
     // #### Check for errors ####

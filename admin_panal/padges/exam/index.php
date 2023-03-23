@@ -84,7 +84,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap drp-lst">
-                            <h4>Departments List</h4>
+                            <h4>Exams List</h4>
                             <div class="add-product">
                                
                             </div>
@@ -99,7 +99,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                         <th>Question</th>
                                         <th>No Question</th>
                                         <th>Status</th>
-                                        <th>Setting</th>
+                                        <th>Action</th>
                                     </tr>
                                     <?php
                                      foreach($exams as $item): 

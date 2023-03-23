@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2022 at 10:45 AM
+-- Generation Time: Mar 23, 2023 at 05:27 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.24
 
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `role`, `status`) VALUES
-(2, 'admin', 'admin@gmail.com', '$2y$10$KQrkgkp7jlWt.nhlmwyhruojxf0hgvG7mAmZQ4YxO4UFJFF5Gu1Zi', 1, 'accept');
+(2, 'admin', 'admin@app.com', '$2y$10$KQrkgkp7jlWt.nhlmwyhruojxf0hgvG7mAmZQ4YxO4UFJFF5Gu1Zi', 1, 'accept');
 
 -- --------------------------------------------------------
 
@@ -57,13 +57,6 @@ CREATE TABLE `enroll` (
   `exam_end_time` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `enroll`
---
-
-INSERT INTO `enroll` (`enroll_id`, `student_id`, `exam_id`, `attendance_status`, `exam_end_time`) VALUES
-(1, 1111, 1, 'completed', '2022-05-12 10:48:00');
-
 -- --------------------------------------------------------
 
 --
@@ -73,7 +66,7 @@ INSERT INTO `enroll` (`enroll_id`, `student_id`, `exam_id`, `attendance_status`,
 CREATE TABLE `exams` (
   `exam_id` bigint(20) NOT NULL,
   `exam_title` varchar(255) NOT NULL,
-  `exam_datetime` datetime NOT NULL,
+  `exam_datetime` datetime NOT NULL COMMENT 'Date Expire Exam',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `exam_duration` varchar(50) NOT NULL,
   `total_question` int(3) NOT NULL,
@@ -87,7 +80,7 @@ CREATE TABLE `exams` (
 --
 
 INSERT INTO `exams` (`exam_id`, `exam_title`, `exam_datetime`, `created_at`, `exam_duration`, `total_question`, `status`, `level_id`, `subject_id`) VALUES
-(1, 'financial accounting exam', '2022-05-12 23:03:00', '2022-05-13 05:30:21', '5 Minute', 5, 'completed', 1, 1);
+(1, 'test 1', '2024-06-12 09:17:00', '2023-03-23 04:17:40', '5 Minute', 5, 'pending', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -108,7 +101,9 @@ CREATE TABLE `lectures` (
 --
 
 INSERT INTO `lectures` (`lecture_id`, `lecture_name`, `typ`, `date_lec`, `material_id`) VALUES
-(1, 'pexels-mikhail-nilov-8298336.mp4', 1, '21:34:15', 1);
+(1, 'pexels-mikhail-nilov-8298336.mp4', 1, '20:21:11', 5),
+(2, 'production ID_4986111.mp4', 2, '21:12:37', 6),
+(3, 'student.mp4', 1, '21:16:28', 8);
 
 -- --------------------------------------------------------
 
@@ -149,7 +144,10 @@ CREATE TABLE `material` (
 --
 
 INSERT INTO `material` (`id`, `description`, `date_mat`, `sub_id`) VALUES
-(1, 'the first lecturer', '1970-01-01', 1);
+(5, 'week 1', '2023-09-20', 1),
+(6, 'week 2', '2023-09-30', 1),
+(7, 'week 3', '2023-10-05', 1),
+(8, 'week 1', '2023-11-08', 2);
 
 -- --------------------------------------------------------
 
@@ -169,26 +167,26 @@ CREATE TABLE `option` (
 --
 
 INSERT INTO `option` (`option_id`, `question_id`, `option_number`, `option_title`) VALUES
-(1, 1, 1, '33'),
-(2, 1, 2, '22'),
-(3, 1, 3, '25'),
-(4, 1, 4, '50'),
-(5, 2, 1, '100'),
-(6, 2, 2, '140'),
-(7, 2, 3, '162'),
-(8, 2, 4, '130'),
-(9, 3, 1, '79'),
-(10, 3, 2, '89'),
-(11, 3, 3, '69'),
-(12, 3, 4, '99'),
-(13, 4, 1, '12'),
-(14, 4, 2, '11'),
-(15, 4, 3, '30'),
-(16, 4, 4, '5'),
-(17, 5, 1, '4000'),
-(18, 5, 2, '3545'),
-(19, 5, 3, '3999'),
-(20, 5, 4, '2999');
+(1, 1, 1, 'er1'),
+(2, 1, 2, 'er2'),
+(3, 1, 3, 'er3'),
+(4, 1, 4, 're4'),
+(5, 2, 1, 'adf'),
+(6, 2, 2, 'dfe'),
+(7, 2, 3, 'dfed'),
+(8, 2, 4, 'fe'),
+(9, 3, 1, '2'),
+(10, 3, 2, '11'),
+(11, 3, 3, '1010'),
+(12, 3, 4, '24'),
+(13, 4, 1, 'adf'),
+(14, 4, 2, 'dgsf'),
+(15, 4, 3, 'gsfg'),
+(16, 4, 4, 'sfg'),
+(17, 5, 1, 'reqrf'),
+(18, 5, 2, 'dsafgsa'),
+(19, 5, 3, 'gsafg'),
+(20, 5, 4, 'safg');
 
 -- --------------------------------------------------------
 
@@ -203,13 +201,6 @@ CREATE TABLE `presences` (
   `presence_count` int(11) NOT NULL,
   `pres_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `presences`
---
-
-INSERT INTO `presences` (`pres_id`, `std_id`, `sub_id`, `presence_count`, `pres_date`) VALUES
-(1, 1111, 1, 1, '2022-05-13 05:19:22');
 
 -- --------------------------------------------------------
 
@@ -229,11 +220,11 @@ CREATE TABLE `question` (
 --
 
 INSERT INTO `question` (`question_id`, `exam_id`, `question_title`, `answer_option`) VALUES
-(1, 1, '5 * 5 =', '3'),
-(2, 1, '20 + 120 = ', '2'),
-(3, 1, '99 - 20 = ', '1'),
-(4, 1, '55 / 5', '2'),
-(5, 1, '1999 + 2000 = ', '3');
+(1, 1, 'qqq', '1'),
+(2, 1, 'ssdasd', '2'),
+(3, 1, '1+1', '1'),
+(4, 1, 'qrqerqe', '1'),
+(5, 1, 'asd hdghd shdghs', '1');
 
 -- --------------------------------------------------------
 
@@ -258,7 +249,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`code_st`, `national`, `name`, `address`, `phone`, `gender`, `birthday`, `status`, `lev_id`) VALUES
-(1111, 12345679814562, 'saico', 'city nassir', '01245459112', 'male', '1999-10-11', 'accept', 1);
+(1234, 12345649782123, 'maher', 'cairo', '05555555555', 'male', '2004-06-10', 'accept', 1),
+(4321, 46655544897531, 'no3man', 'cairo', '02222222222', 'male', '1999-10-11', 'accept', 1);
 
 -- --------------------------------------------------------
 
@@ -274,15 +266,6 @@ CREATE TABLE `student_revisions` (
   `answar_option` enum('1','2','3','4') NOT NULL,
   `marks` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `student_revisions`
---
-
-INSERT INTO `student_revisions` (`revision_id`, `student_id`, `exam_id`, `question_id`, `answar_option`, `marks`) VALUES
-(1, 1111, 1, 1, '3', '1 mark'),
-(2, 1111, 1, 2, '2', '1 mark'),
-(3, 1111, 1, 3, '3', '0 mark');
 
 -- --------------------------------------------------------
 
@@ -301,7 +284,10 @@ CREATE TABLE `subjects` (
 --
 
 INSERT INTO `subjects` (`id`, `name`, `lev_id`) VALUES
-(1, 'Financial Accounting', 1);
+(1, 'Mathematics', 1),
+(2, 'Computer Introduction', 1),
+(3, 'Software Engineering', 2),
+(4, 'Decision Support Systems', 2);
 
 --
 -- Indexes for dumped tables
@@ -404,13 +390,13 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `enroll`
 --
 ALTER TABLE `enroll`
-  MODIFY `enroll_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `enroll_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `exams`
@@ -422,7 +408,7 @@ ALTER TABLE `exams`
 -- AUTO_INCREMENT for table `lectures`
 --
 ALTER TABLE `lectures`
-  MODIFY `lecture_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `lecture_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `levels`
@@ -434,7 +420,7 @@ ALTER TABLE `levels`
 -- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `option`
@@ -446,7 +432,7 @@ ALTER TABLE `option`
 -- AUTO_INCREMENT for table `presences`
 --
 ALTER TABLE `presences`
-  MODIFY `pres_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `pres_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `question`
@@ -458,13 +444,13 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT for table `student_revisions`
 --
 ALTER TABLE `student_revisions`
-  MODIFY `revision_id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `revision_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

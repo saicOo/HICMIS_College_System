@@ -152,7 +152,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap drp-lst">
-                            <h4>Departments List</h4>
+                            <h4>materials List</h4>
                             <div class="add-product">
                                
                             </div>
@@ -160,11 +160,11 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <table>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name of material.</th>
+                                        <th>Name</th>
                                         <th>date</th>
                                         <th>subject</th>
                                         <th>show Lecture</th>
-                                        <th>Setting</th>
+                                        <th>Action</th>
                                     </tr>
                                     <?php foreach($disblaymaterial as $item): ?>
                                     <tr>

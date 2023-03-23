@@ -47,7 +47,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                     <ul class="breadcome-menu" style="text-align: left;">
                                             <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
-                                            <li><span class="bread-blod">add student</span>
+                                            <li><span class="bread-blod">Add Student</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -82,11 +82,6 @@ require_once PAGE_PATH."/../layouts/header.php";
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-payment-inner-st">
-                            <ul id="myTabedu1" class="tab-review-design">
-                                <li class="active"><a href="#description">Basic Information</a></li>
-                            </ul>
-                            <div id="myTabContent" class="tab-content custom-product-edit">
-                                <div class="product-tab-list tab-pane fade active in" id="description">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
@@ -145,7 +140,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="payment-adress">
-                                                                    <button type="submit" name="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                                    <button type="submit" name="submit" class="btn btn-primary waves-effect waves-light">Add</button>
                                                                     
                                                                 </div>
                                                             </div>
@@ -155,8 +150,6 @@ require_once PAGE_PATH."/../layouts/header.php";
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
                         </div>
 
                     </div>

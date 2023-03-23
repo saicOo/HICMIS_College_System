@@ -61,7 +61,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap drp-lst">
-                            <h4>Departments List</h4>
+                            <h4>Admins List</h4>
                             <div class="add-product">
                                
                             </div>
@@ -74,27 +74,29 @@ require_once PAGE_PATH."/../layouts/header.php";
                                         <th>email</th>
                                         <th>role</th>
                                         <th>show profile</th>
-                                        <th>Setting</th>
+                                        <th>Action</th>
                                     </tr>
                                     <?php 
-                                     foreach($admins as $item): ?>
+                                     foreach($admins as $index => $admin): ?>
                                     <tr>
                                         <td>1</td>
-                                        <td><?php echo $item['id'] ?></td>
-                                        <td><?php echo $item['name'] ?></td>
-                                        <td><?php echo $item['email'] ?></td>
-                                        <td><?php echo $item['role'] ?></td>
-                                        <td><a href="/admin_panal/padges/auth/profile.php?ref=<?php echo $item['id'] ?>"><i class="fa fa-user edu-avatar" aria-hiden="true"></i> show</a></td>
+                                        <td><?php echo $admin['id'] ?></td>
+                                        <td><?php echo $admin['name'] ?></td>
+                                        <td><?php echo $admin['email'] ?></td>
+                                        <td><?php echo $admin['role'] ?></td>
+                                        <td><a href="/admin_panal/padges/auth/profile.php?ref=<?php echo $admin['id'] ?>"><i class="fa fa-user edu-avatar" aria-hiden="true"></i> show</a></td>
                                         <td>
+                                            <?php if($index != 0): ?>
                                             <form method="post">
-                                                <?php if($item['status'] == "accept"): ?>
-                                                    <input type="hidden" name="id" value="<?php echo $item['id'] ?>">
+                                                <?php if($admin['status'] == "accept"): ?>
+                                                    <input type="hidden" name="id" value="<?php echo $admin['id'] ?>">
                                                     <button name="not-accept" class="btn btn-custon-rounded-three btn-success" ><i class="fa fa-check edu-checked-pro" aria-hidden="true"></i> accept</button>
                                                     <?php else: ?>
-                                                        <input type="hidden" name="id" value="<?php echo $item['id'] ?>">
+                                                        <input type="hidden" name="id" value="<?php echo $admin['id'] ?>">
                                                         <button name="accept" class="btn btn-custon-rounded-three btn-danger"><i class="fa fa-times edu-danger-error" aria-hiden="true"></i> not accept</button>
                                                         <?php endif ?>
                                             </form>
+                                            <?php endif ?>
                                         </td>
                                     </tr>
                                     <?php endforeach ?>

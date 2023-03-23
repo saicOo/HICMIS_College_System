@@ -43,7 +43,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                     <ul class="breadcome-menu" style="text-align: left;">
                                             <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
-                                            <li><span class="bread-blod">Add Exam</span>
+                                            <li><span class="bread-blod">Add question</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -78,11 +78,6 @@ require_once PAGE_PATH."/../layouts/header.php";
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-payment-inner-st">
-                            <ul id="myTabedu1" class="tab-review-design">
-                                <li class="active"><a href="#description">Basic Information</a></li>
-                            </ul>
-                            <div id="myTabContent" class="tab-content custom-product-edit">
-                                <div class="product-tab-list tab-pane fade active in" id="description">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
@@ -110,7 +105,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                                                 
                                                                 <div class="form-group">
                                                                     <select name="answer_option" class="form-control">
-																		<option value="">Select answer_option</option>
+																		<option value="">Select answer option</option>
 																		<option value="1">Option 1</option>
 																		<option value="2">Option 2</option>
 																		<option value="3">Option 3</option>
@@ -136,7 +131,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="payment-adress">
-                                                                    <button type="submit" name="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                                    <button type="submit" name="submit" class="btn btn-primary waves-effect waves-light">Add</button>
                                                                     
                                                                 </div>
                                                             </div>
@@ -146,8 +141,6 @@ require_once PAGE_PATH."/../layouts/header.php";
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
                         </div>
 
                     </div>
@@ -158,27 +151,3 @@ require_once PAGE_PATH."/../layouts/header.php";
         <!-- start footer area -->
         <?php  require_once PAGE_PATH."/../layouts/footer.php"; ?>
         <!-- end footer area -->
-        <!-- <script type="text/javascript">
-            $(document).on('change','.levels',function(){
-            level = $(this).val();
-            console.log(level);
-            $.ajax({
-                method:'POST',
-                url:'/admin_panal/padges/exam/ajax.php',
-                dataType: "json",
-                data: {lev: level},
-                success: function(data,status){
-                    console.log(data);
-                    console.log(status);
-                    var subjects = '<option>-- Select Subject --</option>';
-                    var arr = data.subject.length;
-                    var aa = data.subject;
-                   
-                    for(var i=0;i<arr;i++){
-                       subjects += '<option value="'+aa[i].id+'">'+aa[i].name+'</option>';
-                    }
-                    $(".subjects").html(subjects);
-                }
-            })
-        });
-        </script> -->

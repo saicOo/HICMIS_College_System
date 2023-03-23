@@ -64,7 +64,7 @@ class Question extends Connect{
                 $result = $this->conn->exec($sql);
 
 
-                $_SESSION['success'] = "The exam has been successfully registered";
+                $_SESSION['success'] = "The question has been successfully registered";
                 header("Refresh:0");
                 exit;
             }else{

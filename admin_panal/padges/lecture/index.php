@@ -37,6 +37,7 @@ if(isset($_GET['ref'])){
           'lecture_type'=> $_FILES['lecture']['type'],
           'lecture_name'=> $_FILES['lecture']['name'],
           'lecture_tmp'=> $_FILES['lecture']['tmp_name'],
+          'lecture_size'=> $_FILES['lecture']['size'],
       );
       $lecture->store($request);
       }
@@ -119,13 +120,13 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <table>
                                     <tr>
                                         <th>No</th>
-                                        <th>Name of lecture.</th>
+                                        <th>Name</th>
                                         <th>date</th>
                                         <th>type</th>
                                         <th>material</th>
                                         <th>subject</th>
                                         <th>level</th>
-                                        <th>Setting</th>
+                                        <th>Action</th>
                                     </tr>
                                     <?php foreach($disblaylecture as $item): ?>
                                     <tr>
@@ -176,8 +177,8 @@ require_once PAGE_PATH."/../layouts/header.php";
 																				<i class="fa fa-download"></i>
 																			</label>
                                                                         <div class="file-button">
-                                                                            Browse
-                                                                            <input name="lecture" type="file" onchange="document.getElementById('prepend-big-btn').value = this.value;">
+                                                                            Upload
+                                                                            <input name="lecture" type="file" accept="video/mp4,video/x-m4v,video/*" onchange="document.getElementById('prepend-big-btn').value = this.value;" multiple required>
                                                                         </div>
                                                                         <input type="text" id="prepend-big-btn" placeholder="no file selected">
                                                                     </div>
@@ -190,9 +191,9 @@ require_once PAGE_PATH."/../layouts/header.php";
                                                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
                                                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                                                             <label>
-																									<input type="radio" name="type" value="1" class="i-checks" checked> محاضرة </label>
+																									<input type="radio" name="type" value="1" class="i-checks" checked> Lecture </label>
                                                                                             <label>
-																									<input type="radio" name="type" value="2" class="i-checks"> سكشن </label>
+																									<input type="radio" name="type" value="2" class="i-checks"> Section </label>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="row">

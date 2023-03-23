@@ -47,9 +47,6 @@ if(isset($_GET['logout'])){
     <!-- educate icon CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo $assets ?>css/educate-custon-icon.css">
-    <!-- morrisjs CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo $assets ?>css/morrisjs/morris.css">
     <!-- mCustomScrollbar CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo $assets ?>css/scrollbar/jquery.mCustomScrollbar.min.css">
@@ -66,14 +63,10 @@ if(isset($_GET['logout'])){
 		============================================ -->
     <link rel="stylesheet" href="<?php echo $assets ?>css/metisMenu/metisMenu.min.css">
     <link rel="stylesheet" href="<?php echo $assets ?>css/metisMenu/metisMenu-vertical.css">
-    <!-- calendar CSS
-		============================================ -->
-    <link rel="stylesheet" href="<?php echo $assets ?>css/calendar/fullcalendar.min.css">
-    <link rel="stylesheet" href="<?php echo $assets ?>css/calendar/fullcalendar.print.min.css">
     <!-- style CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo $assets ?>css/alerts.css">
-<!-- notifications CSS
+    <!-- notifications CSS
 		============================================ -->
     <link rel="stylesheet" href="<?php echo $assets ?>css/notifications/Lobibox.min.css">
     <link rel="stylesheet" href="<?php echo $assets ?>css/notifications/notifications.css">
@@ -89,6 +82,3 @@ if(isset($_GET['logout'])){
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-	<![endif]-->

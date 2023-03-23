@@ -45,7 +45,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                                     <ul class="breadcome-menu" style="text-align: left;">
                                             <li><a href="/admin_panal/">Home</a> <span class="bread-slash">/</span>
                                             </li>
-                                            <li><span class="bread-blod">all students</span>
+                                            <li><span class="bread-blod">All Students</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -70,7 +70,7 @@ require_once PAGE_PATH."/../layouts/header.php";
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="product-status-wrap drp-lst">
-                            <h4>Departments List</h4>
+                            <h4>Students List</h4>
                             <div class="add-product">
                                
                             </div>
@@ -78,12 +78,12 @@ require_once PAGE_PATH."/../layouts/header.php";
                                 <table>
                                     <tr>
                                         <th>No</th>
-                                        <th>code student</th>
+                                        <th>code</th>
                                         <th>national</th>
-                                        <th>Name of description.</th>
+                                        <th>Name</th>
                                         <th>Level</th>
                                         <th>show profile</th>
-                                        <th>Setting</th>
+                                        <th>Action</th>
                                     </tr>
                                     <?php $result = isset($_GET['search']) ? $resultSearch : $students;
                                      foreach($result as $item): ?>

@@ -12,9 +12,8 @@
   </div>
   <div class="footer-bottom row align-items-center text-center">
     <p class="footer-text m-0 col-12">
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-All rights reserved. High Institute for Computing and Management Information Systems 2020 © - Ver 1.0.0.0 - Implemented by SmartJet S.r. M.L. ' m.<i class="fa fa-heart-o" aria-hidden="true"></i> 
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+All rights reserved. College System 2020 © - Ver 1.0.0.0 - Implemented by Saico.<i class="fa fa-heart-o" aria-hidden="true"></i> 
+    </p>
   </div>
 </footer>
 <!-- ================ End footer Area ================= -->
